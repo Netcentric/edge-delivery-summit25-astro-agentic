@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.page/
+- Live: https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/
 
 ## Documentation
 
