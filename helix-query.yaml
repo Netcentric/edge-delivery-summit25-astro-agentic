@@ -1,0 +1,59 @@
+indices:
+  specification-pages:
+    target: /specifications/query-index.json
+    include:
+      - '/specifications/**'
+    properties:
+      name:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      feature-names:
+        select: .features > div > div:first-child
+        values: textContent(el)
+      feature-values:
+        select: .features > div > div:nth-child(2)
+        values: textContent(el)
+      specification-names:
+        select: .specifications > div > div:first-child
+        values: textContent(el)
+      specification-values:
+        select: .specifications > div > div:nth-child(2)
+        values: textContent(el)
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+  focus-pages:
+    target: /focus/query-index.json
+    include:
+      - '/focus/**'
+    properties:
+      name:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      image: 
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      description: 
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
+      specifications: 
+        select: head > meta[name="specifications"]
+        value: attribute(el, "content")
+      hull-finishes-names:
+        select: head > meta[name^="hull-finish-image-"]
+        values: attribute(el, "name")
+      hull-finishes-images:
+        select: head > meta[name^="hull-finish-image-"]
+        values: attribute(el, "content")
+      feature-headlines:
+        select: h3
+        values: textContent(el)
+      feature-images:
+        select: h3 + p picture img
+        values: attribute(el, "src")
+      feature-descriptions:
+        select: h3 + p + p
+        values: textContent(el)
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")

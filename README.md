@@ -1,5 +1,4 @@
-# Your Project's Title...
-Your project's description...
+# Astro Agentic - Edge Delivery project for the Adobe 2025 Summit
 
 ## Environments
 - Preview: https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.page/
