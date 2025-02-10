@@ -39,12 +39,6 @@ indices:
       specifications: 
         select: head > meta[name="specifications"]
         value: attribute(el, "content")
-      hull-finishes-names:
-        select: head > meta[name^="hull-finish-image-"]
-        values: attribute(el, "name")
-      hull-finishes-images:
-        select: head > meta[name^="hull-finish-image-"]
-        values: attribute(el, "content")
       feature-headlines:
         select: h3
         values: textContent(el)
