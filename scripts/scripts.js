@@ -17,7 +17,6 @@ import {
   addPageHeader,
   addRestartJourneyLink,
   decorateHeroH1,
-  decorateGroups,
   decorateFocusPage,
 } from './common.js';
 
@@ -208,7 +207,6 @@ export function decorateMain(main) {
   decorateIcons(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateGroups();
   decorateHeroH1();
   decorateFocusPage('product');
   buildAutoBlocks(main);

@@ -1,5 +1,5 @@
 .specifications {
-  margin: 50px 0;
+  margin: 40px 0;
   color: var(--midnight-blue-color);
 }
 
@@ -7,6 +7,7 @@
 .specifications > div {
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #8F8F8F;
 }
 
 /* rows / cells */
@@ -14,16 +15,16 @@
   width: 100%;
 }
 
-/* stylelint-disable-next-line media-feature-range-notation */
-@media (min-width: 600px) {
+@media (width >= 600px) {
   .specifications > div {
     flex-direction: row;
-    column-gap: 20px;
+    column-gap: 80px;
   }
 
   .specifications > div > div:first-child {
     font-weight: bold;
     flex-basis: 300px;
-    text-align: end;
+    text-align: start;
+    padding-left: 30px;
   }
 }

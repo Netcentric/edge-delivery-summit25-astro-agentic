@@ -68,6 +68,8 @@ function decorateFocusPage(pageType) {
   const subGroupElement = document.createElement('div');
   const focusH2 = parentElement.querySelector('h2');
   const description = parentElement.querySelector('p:last-child');
+  const focusList = parentElement.querySelector('ul');
+  const specifications = document.querySelector('.specifications-wrapper');
 
   groupElement.classList.add('group');
   subGroupElement.classList.add('sub-group');
@@ -81,15 +83,20 @@ function decorateFocusPage(pageType) {
 
   if (focusH1) {
     groupElement.appendChild(productTitleWrapper);
-  }
-  if (focusH1) {
+
     subGroupElement.appendChild(focusH1);
   }
   if (focusH2) {
     subGroupElement.appendChild(focusH2);
   }
+  if (focusList) {
+    subGroupElement.appendChild(focusList);
+  }
   if (description) {
     subGroupElement.appendChild(description);
+  }
+  if (specifications) {
+    subGroupElement.appendChild(specifications);
   }
 
   groupElement.appendChild(subGroupElement);
@@ -97,89 +104,9 @@ function decorateFocusPage(pageType) {
   parentElement.appendChild(groupElement);
 }
 
-function decorateGroups() {
-  const parentElement = document.querySelector('body.ship-focus .default-content-wrapper, body.configuration-result .default-content-wrapper');
-
-  if (!parentElement) {
-    return;
-  }
-
-  const isConfigurationResultPage = document.body.classList.contains('configuration-result');
-  const groupContainer = document.createElement('div');
-  const subcontainer = document.createElement('div');
-  let currentComponentGroup = document.createElement('div');
-  let isCard = false;
-  let child = parentElement.firstChild;
-  let isPrevHeading = false;
-
-  subcontainer.classList.add('blocks');
-  currentComponentGroup.classList.add('hero');
-
-  while (child) {
-    if (currentComponentGroup.children.length > 0) {
-      if (!isPrevHeading) {
-        switch (child.nodeName) {
-          case 'H1':
-            groupContainer.appendChild(currentComponentGroup);
-            currentComponentGroup = document.createElement('div');
-            isPrevHeading = true;
-            break;
-          case 'H2':
-            groupContainer.appendChild(currentComponentGroup);
-            currentComponentGroup = document.createElement('div');
-            currentComponentGroup.classList.add('sub-group'); // Becomes sub-group
-            isPrevHeading = true;
-            break;
-          case 'H3':
-            if (isCard && !isConfigurationResultPage) {
-              subcontainer.appendChild(currentComponentGroup);
-            } else {
-              groupContainer.appendChild(currentComponentGroup);
-            }
-            currentComponentGroup = document.createElement('div');
-            currentComponentGroup.classList.add('block'); // Becomes block
-            isCard = true;
-            isPrevHeading = true;
-            break;
-          default:
-            isPrevHeading = false;
-            break;
-        }
-      } else {
-        isPrevHeading = false;
-      }
-      currentComponentGroup.appendChild(child);
-    } else {
-      currentComponentGroup.appendChild(child);
-    }
-    child = parentElement.firstChild;
-
-    if (isConfigurationResultPage && currentComponentGroup.children.length === 1 && child.nodeName === 'H2') {
-      currentComponentGroup.appendChild(child);
-      child = parentElement.firstChild;
-    }
-
-    if (!child) {
-      subcontainer.appendChild(currentComponentGroup);
-      groupContainer.appendChild(subcontainer);
-    }
-  }
-
-  if (isConfigurationResultPage) {
-    const lastGroup = groupContainer.querySelector('div :nth-last-child(1 of .block)');
-
-    if (lastGroup) {
-      lastGroup.classList.add('last');
-    }
-  }
-
-  parentElement.appendChild(groupContainer);
-}
-
 export {
   addRestartJourneyLink,
   decorateHeroH1,
   addPageHeader,
   decorateFocusPage,
-  decorateGroups,
 };
