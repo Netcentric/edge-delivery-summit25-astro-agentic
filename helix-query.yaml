@@ -19,7 +19,7 @@ indices:
   segments:
     target: /query-segments.json
     include:
-      - '/segements/**'
+      - '/segments/**'
     properties:
       name:
         select: head > meta[property="og:title"]
