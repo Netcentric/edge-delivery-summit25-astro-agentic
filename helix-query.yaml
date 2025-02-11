@@ -45,8 +45,8 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       description: 
-        select: head > meta[property="og:description"]
-        value: attribute(el, "content")
+        select: main p:not(:has(picture))
+        values: el
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
