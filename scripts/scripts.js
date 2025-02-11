@@ -1,28 +1,172 @@
 import {
-  buildBlock,
+  // loadHeader,
+  // loadFooter,
   decorateButtons,
   decorateIcons,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
+  loadCSS,
+  getMetadata,
   waitForFirstImage,
   loadSection,
   loadSections,
-  loadCSS,
 } from './aem.js';
 
-/**
- * Builds hero block and prepends to main in a new section.
- * @param {Element} main The container element
- */
-function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1');
-  const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
-    main.prepend(section);
+import {
+  addPageHeader,
+  addRestartJourneyLink,
+  decorateHeroH1,
+  decorateGroups,
+  decorateFocusPage,
+} from './common.js';
+
+function addSpeedInformation(info, containerElement, name, splitWords = false) {
+  const infoElement = document.createElement('div');
+
+  infoElement.classList.add('info');
+
+  const texts = info.split(' ');
+  const result = `<span class="info-number">${splitWords ? info : texts[0]}</span><span class="info-text">${splitWords ? name : texts.slice(1).join(' ')}</span>`;
+
+  infoElement.innerHTML = result;
+  containerElement.appendChild(infoElement);
+}
+
+function addShipSpecifications(specs, addIntroduction) {
+  const infoContainer = document.createElement('div');
+  const heroContainer = document.querySelector('.hero');
+
+  if (specs.Range) {
+    addSpeedInformation(specs.Range, infoContainer);
+    addSpeedInformation(specs['Number of Passengers'].replace('to', '–').replaceAll(' ', ''), infoContainer, 'passengers', true);
+    addSpeedInformation(specs.Length, infoContainer);
+  }
+  infoContainer.classList.add('info-container');
+  heroContainer.append(infoContainer);
+
+  const specContainer = document.createElement('div');
+  specContainer.classList.add('spec-container');
+
+  const introduction = addIntroduction ? `<h2>SPECIFICATIONS</h2><div><p>Learn more about the ${document.querySelector('h1').textContent} and its technical specifications.</p></div>` : '';
+  const content = `${introduction}
+  <div class="spec-table">
+    <div class="spec-item">
+      <div class="spec-title">Length</div>
+      <div class="spec-value">${specs.Length}</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-title">Width</div>
+      <div class="spec-value">${specs.Width}</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-title">Height</div>
+      <div class="spec-value">${specs.Height}</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-title">Weight</div>
+      <div class="spec-value">${specs.Weight}</div>
+    </div>
+  </div>`;
+  specContainer.innerHTML = content;
+
+  const parentElement = document.querySelector('body .default-content-wrapper > div');
+  parentElement.appendChild(specContainer);
+}
+
+function addProductSpecifications(specs) {
+  const specContainer = document.createElement('div');
+  specContainer.classList.add('product-spec-container');
+
+  const content = `<table>
+    <tr><td>Length</td><td>${specs.Length}</td></tr>
+    <tr><td>Width</td><td>${specs.Width}</td></tr>
+    <tr><td>Maximum Speed</td><td>${specs['Maximum Speed']}</td></tr>
+    <tr><td>Range</td><td>${specs.Range}</td></tr>
+  <table>`;
+  specContainer.innerHTML = content;
+
+  return specContainer;
+}
+
+async function prepareSpecification() {
+  const isTemplate = (template) => document.body.classList.contains(template);
+  const isProductFocus = isTemplate('product-focus');
+  const isConfigurationResult = !isProductFocus && isTemplate('configuration-result');
+
+  try {
+    const configurationsPromise = isConfigurationResult && fetch('/configurations.json', { cache: 'no-cache' });
+
+    if (!isProductFocus && !isConfigurationResult) {
+      return;
+    }
+    const specificationPath = getMetadata('specifications');
+    if (!specificationPath) {
+      return;
+    }
+    const specificationUrl = new URL(specificationPath);
+    const specificationsResponse = await fetch('/specifications/query-index.json');
+    if (!specificationsResponse.ok) {
+      return;
+    }
+    const specifications = await specificationsResponse.json();
+    const findSpecification = (path) => specifications.data.find((s) => s.path === path);
+    const specification = findSpecification(specificationUrl.pathname);
+    if (!specification) {
+      return;
+    }
+
+    const specificationsObj = JSON.parse(specification.specifications);
+
+    if (isConfigurationResult) {
+      addShipSpecifications(specificationsObj, !isConfigurationResult);
+    } else /* if (isProductFocus) */ {
+      const specContainer = addProductSpecifications(specificationsObj);
+      const parentElement = document.querySelector('body .default-content-wrapper .sub-group');
+
+      parentElement.appendChild(specContainer);
+    }
+
+    if (isConfigurationResult) {
+      const productSpecificationUrl = getMetadata('product-specifications');
+
+      if (productSpecificationUrl) {
+        const productSpecification = findSpecification(new URL(productSpecificationUrl).pathname);
+
+        document.body.dataset.productSpecification = productSpecification.specifications;
+
+        if (productSpecification) {
+          const specContainer = addProductSpecifications(
+            JSON.parse(productSpecification.specifications),
+          );
+          const productDescription = document.querySelector('.default-content-wrapper > div > :nth-child(2 of .sub-group)');
+
+          if (productDescription) {
+            productDescription.append(specContainer);
+          }
+        }
+      }
+    }
+    document.body.dataset.features = specification.features;
+    document.body.dataset.specification = specification.specifications;
+
+    if (configurationsPromise) {
+      const configurationsResponse = await configurationsPromise;
+      if (!configurationsResponse.ok) {
+        return;
+      }
+      const configurations = await configurationsResponse.json();
+      const configuration = configurations.data.find(
+        (c) => c.configuration === window.location.pathname,
+      );
+      if (!configuration) {
+        return;
+      }
+      document.querySelector('[id^="hello-traveler"]').textContent = `Hello ${configuration.firstName}`;
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('could not load specifications', e);
   }
 }
 
@@ -44,7 +188,8 @@ async function loadFonts() {
  */
 function buildAutoBlocks(main) {
   try {
-    buildHeroBlock(main);
+    // buildHeroBlock(main);
+    prepareSpecification(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -58,11 +203,16 @@ function buildAutoBlocks(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  addPageHeader();
   decorateButtons(main);
   decorateIcons(main);
-  buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateGroups();
+  decorateHeroH1();
+  decorateFocusPage('product');
+  buildAutoBlocks(main);
+  addRestartJourneyLink();
 }
 
 /**
@@ -101,6 +251,8 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  // loadHeader(doc.querySelector('header'));
+  // loadFooter(doc.querySelector('footer'));
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }

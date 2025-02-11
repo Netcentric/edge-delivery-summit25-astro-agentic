@@ -1,0 +1,29 @@
+.specifications {
+  margin: 50px 0;
+  color: var(--midnight-blue-color);
+}
+
+/* lines */
+.specifications > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* rows / cells */
+.specifications > div > div {
+  width: 100%;
+}
+
+/* stylelint-disable-next-line media-feature-range-notation */
+@media (min-width: 600px) {
+  .specifications > div {
+    flex-direction: row;
+    column-gap: 20px;
+  }
+
+  .specifications > div > div:first-child {
+    font-weight: bold;
+    flex-basis: 300px;
+    text-align: end;
+  }
+}

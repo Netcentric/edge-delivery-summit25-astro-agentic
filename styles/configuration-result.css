@@ -1,0 +1,341 @@
+body.configuration-result .section > div {
+  padding-bottom: 100px;
+}
+
+body.configuration-result header {
+  display: block;
+  height: auto;
+  background-color: white;
+  color: var(--midnight-blue-color);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Header tablet/desktop: */
+@media (width >= 600px) {
+  body.configuration-result header {
+    font-size: 20px;
+  }
+}
+
+body.configuration-result p {
+  font-size: 20px;
+}
+
+body.configuration-result h2 {
+  font-size: 28px;
+}
+
+body.configuration-result .default-content-wrapper h3 {
+  font-size: 20px;
+}
+
+body.configuration-result header .wrapper {
+  margin: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  height: 68px;
+  padding: 0 18px;
+  align-items: center;
+}
+
+body.configuration-result header .wrapper:first-child {
+  display: flex;
+}
+
+body.configuration-result .section {
+  padding: 0;
+}
+
+/* Hero:  */
+body.configuration-result .hero {
+  background-color: var(--midnight-blue-color);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-bottom: 15px;
+}
+
+body.configuration-result .hero p {
+  order: 1;
+  margin: 0;
+}
+
+body.configuration-result .hero h1 {
+  order: 3;
+  margin: 15px;
+  font-size: 35px;
+  text-transform: uppercase;
+  width: 25%;
+  text-shadow: 0 0 64px black;
+}
+
+body.configuration-result .hero h2 {
+  font-size: 22px;
+  order: 2;
+  margin: 15px 15px 10px;
+}
+
+body.configuration-result .hero .info-container {
+  order: 4;
+}
+
+body.configuration-result .hero img {
+  width: 100vw;
+}
+
+body.configuration-result .hero > h1:first-child .indent:nth-child(2) {
+  padding-left: 25%;
+}
+
+body.configuration-result .hero .info {
+  background-color: transparent;
+  color: white;
+  line-height: 1em;
+  margin-bottom: 0;
+}
+
+body.configuration-result .hero .info-number {
+  font-size: 22px;
+  display: block;
+}
+
+
+body.configuration-result .hero .info-text {
+  font-size: 12px;
+}
+
+body.configuration-result .sub-group {
+  margin: 20px 15px;
+  clear: both;
+}
+
+body.configuration-result .sub-group::after {
+  content: '';
+  width: 100%;
+  height: 0;
+  clear: both;
+  display: block;
+}
+
+body.configuration-result .block {
+  margin: 20px 15px;
+}
+
+body.configuration-result .block img {
+  width: 100%;
+}
+
+body.configuration-result .blocks {
+  margin: 0;
+  display: block;
+}
+
+body.configuration-result .spec-container {
+  margin: 20px 15px;
+}
+
+/* Product Specs */
+body.configuration-result .product-spec-container table tr {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+body.configuration-result .product-spec-container table td {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+body.configuration-result .product-spec-container table tr td:first-child {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+body.configuration-result .product-spec-container table tr td:last-child {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+@media (width >= 600px) {
+  body.configuration-result .section > div {
+    padding: 0 32px 160px;
+  }
+
+  body.configuration-result h2 {
+    font-size: 70px;
+  }
+
+  body.configuration-result header .wrapper {
+    height: 70px;
+  }
+
+  body.configuration-result .hero {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+    display: block;
+    background-color: transparent;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body.configuration-result .hero > p {
+    max-height: 100vh;
+    display: block;
+    overflow-y: hidden;
+    margin: 0 -130px;
+  }
+
+  body.configuration-result .hero + div {
+    margin-top: 100vh;
+  }
+
+  body.configuration-result .hero img {
+    width: 100%;
+    height: calc(100vh - 70px);
+    object-fit: cover;
+  }
+
+  body.configuration-result .hero h1 {
+    font-size: 100px;
+    position: absolute;
+    width: 200px;
+    top: 130px;
+    left: 5%;
+    line-height: 1.05;
+  }
+
+  body.configuration-result .hero h2 {
+    font-size: 36px;
+    position: absolute;
+    top: 70px;
+    left: 5%;
+  }
+
+  body.configuration-result .hero > h1:first-child .indent:nth-child(2) {
+    padding-left: 30%;
+  }
+
+  body.configuration-result .info-container {
+    position: absolute;
+    bottom: 10%;
+    right: 130px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  body.configuration-result .info-container .info {
+    background-color: rgb(255 255 255 / 90%);
+    color: var(--midnight-blue-color);
+  }
+
+  body.configuration-result .info-container .info-number {
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: 300;
+    display: inline;
+  }
+
+  body.configuration-result .info-container .info-text {
+    font-size: 15px;
+    line-height: 24px;
+    padding-left: 5px;
+  }
+
+
+  body.configuration-result .default-content-wrapper > div .block {
+    margin: 40px 0;
+  }
+
+  body.configuration-result .blocks .sub-group h3 {
+    border-top: 1px solid var(--midnight-blue-color);
+    padding-top: 20px;
+    margin-top: 35px;
+  }
+
+  /* top left */
+  body.configuration-result .default-content-wrapper > div > :nth-child(4n+1 of .block) {
+    clear: both;
+    float: left;
+    width: 60%;
+  }
+
+  /* top right */
+  body.configuration-result .default-content-wrapper > div > :nth-child(4n+2 of .block) {
+    float: right;
+    width: 30%;
+  }
+
+  /* bottom left */
+  body.configuration-result .default-content-wrapper > div > :nth-child(4n+3 of .block) {
+    float: left;
+    width: 30%;
+    clear: both;
+  }
+
+  body.configuration-result .default-content-wrapper > div > .sub-group ~ :nth-child(4n+1 of .block).last,
+    body.configuration-result .default-content-wrapper > div > .sub-group ~ :nth-child(4n+3 of .block).last {
+    width: 100%;
+  }
+
+  /* bottom right */
+  body.configuration-result .default-content-wrapper > div > :nth-child(4n+4 of .block) {
+    float: right;
+    width: 60%;
+  }
+
+  body.configuration-result .default-content-wrapper > div > :nth-child(2 of .sub-group) {
+    margin: 0;
+  }
+
+  body.configuration-result .default-content-wrapper > div > :nth-child(2 of .sub-group) > :nth-child(3) {
+    clear: both;
+    margin-bottom: 60px;
+  }
+
+  body.configuration-result .default-content-wrapper > div > :nth-child(2 of .sub-group) img {
+    width: 66%;
+    float: right;
+  }
+
+  body.configuration-result .default-content-wrapper > div > :nth-child(2 of .sub-group) .product-spec-container {
+    width: 30%;
+    float: left;
+  }
+
+  body.configuration-result .blocks {
+    clear: both;
+    margin-top: 60px;
+  }
+
+  body.configuration-result .blocks h2 {
+    font-size: 38px;
+  }
+
+  body.configuration-result .sub-group {
+    margin: 20px 0;
+  }
+
+  /* Product Specs */
+  /* stylelint-disable-next-line no-descending-specificity */
+  body.configuration-result .product-spec-container {
+    margin-top: 0;
+  }
+
+  body.configuration-result .product-spec-container table tr td:last-child {
+    font-size: 24px;
+  }
+}
+
+@media (width >= 900px) {
+  body.configuration-result .hero h1 {
+    font-size: 125px;
+  }
+}
+
