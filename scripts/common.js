@@ -75,10 +75,10 @@ function decorateFocusPage(pageType) {
   subGroupElement.classList.add('sub-group');
 
   const urlParams = new URLSearchParams(window.location.search);
-  const baseModelParam = urlParams.get('baseModel');
+  const selectedProductParam = urlParams.get('selectedProduct');
 
-  if (baseModelParam) {
-    productTitleWrapper.innerHTML = `Selected product: ${baseModelParam}`;
+  if (selectedProductParam) {
+    productTitleWrapper.innerHTML = `Selected product: ${selectedProductParam}`;
   }
 
   if (focusH1) {
