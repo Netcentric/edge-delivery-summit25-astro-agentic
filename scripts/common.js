@@ -62,29 +62,22 @@ function decorateFocusPage(pageType) {
     return;
   }
 
-  const productTitleWrapper = document.createElement('h2');
   const groupElement = document.createElement('div');
   const subGroupElement = document.createElement('div');
+  const productTitleWrapper = document.createElement('h2'); // This will be empty initially
 
   // Get all content elements in order
   const elements = Array.from(parentElement.children);
-
-  // Find the picture paragraph (first p containing img)
   const pictureParagraph = parentElement.querySelector('p:has(img)');
 
   groupElement.classList.add('group');
   subGroupElement.classList.add('sub-group');
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedProductParam = urlParams.get('selectedProduct');
-
-  if (selectedProductParam) {
-    productTitleWrapper.innerHTML = `Selected product: ${selectedProductParam}`;
-    groupElement.appendChild(productTitleWrapper);
-  }
+  // Add empty h2 to group first
+  groupElement.appendChild(productTitleWrapper);
 
   // Move all elements except the picture paragraph to subgroup
-  elements.forEach(element => {
+  elements.forEach((element) => {
     if (element !== pictureParagraph) {
       subGroupElement.appendChild(element);
     }
