@@ -62,21 +62,19 @@ function decorateFocusPage(pageType) {
     return;
   }
 
-  const groupElement = document.createElement('div');
   const subGroupElement = document.createElement('div');
-  const productTitleWrapper = document.createElement('h2'); // This will be empty initially
+  const selectedItemElement = document.createElement('h2');
+  selectedItemElement.innerHTML = 'THIS IS A TEST';
+  selectedItemElement.classList.add('content__header');
 
   // Get all content elements in order
   const elements = Array.from(parentElement.children);
   const pictureParagraph = parentElement.querySelector('p:has(img)');
+  pictureParagraph.classList.add('content__image');
 
-  groupElement.classList.add('group');
-  subGroupElement.classList.add('sub-group');
+  subGroupElement.classList.add('content__body');
 
-  // Add empty h2 to group first
-  groupElement.appendChild(productTitleWrapper);
-
-  // Move all elements except the picture paragraph to subgroup
+  // Move all elements except the picture paragraph to __body
   elements.forEach((element) => {
     if (element !== pictureParagraph) {
       subGroupElement.appendChild(element);
@@ -89,14 +87,14 @@ function decorateFocusPage(pageType) {
     subGroupElement.appendChild(specifications);
   }
 
-  groupElement.appendChild(subGroupElement);
-
   // Clear parent and reconstruct in correct order
   parentElement.innerHTML = '';
   if (pictureParagraph) {
     parentElement.appendChild(pictureParagraph);
   }
-  parentElement.appendChild(groupElement);
+  // Add the h2 and subgroup directly to parent
+  parentElement.appendChild(selectedItemElement);
+  parentElement.appendChild(subGroupElement);
 }
 
 export {
