@@ -274,13 +274,6 @@ main .section.highlight {
   font-weight: bold;
 }
 
-body.segment-focus {
-    h3 {
-        color: red;
-    }
-}
-
-
 /* Specifications container: */
 .spec-container {
   margin-top: 86px;
