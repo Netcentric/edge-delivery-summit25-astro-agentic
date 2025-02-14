@@ -64,7 +64,6 @@ function decorateFocusPage(pageType) {
 
   const subGroupElement = document.createElement('div');
   const selectedItemElement = document.createElement('h2');
-  selectedItemElement.innerHTML = 'THIS IS A TEST';
   selectedItemElement.classList.add('content__header');
 
   // Get all content elements in order
