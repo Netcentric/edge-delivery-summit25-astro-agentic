@@ -1,6 +1,12 @@
 .specifications {
-  margin: 40px 0;
+  margin-block: 30px;
   color: var(--midnight-blue-color);
+}
+
+.specifications p {
+  margin-block: 16px;
+  font-weight: 16px;
+  line-height: 24px;
 }
 
 /* lines */
@@ -25,6 +31,6 @@
     font-weight: bold;
     flex-basis: 300px;
     text-align: start;
-    padding-left: 30px;
+    padding-left: 20px;
   }
 }
