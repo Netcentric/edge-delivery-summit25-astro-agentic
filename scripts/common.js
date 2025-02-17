@@ -68,8 +68,9 @@ function decorateFocusPage(pageType) {
 
   // Get all content elements in order
   const elements = Array.from(parentElement.children);
+
   const pictureParagraph = parentElement.querySelector('p:has(img)');
-  pictureParagraph.classList.add('content__image');
+  pictureParagraph?.classList.add('content__image');
 
   subGroupElement.classList.add('content__body');
 
