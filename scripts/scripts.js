@@ -195,19 +195,6 @@ function buildAutoBlocks(main) {
   }
 }
 
-// TODO: this is just an example, remove it
-function decorateSegmentPage() {
-  const isSegmentPage = document.querySelector('body.segment-focus');
-
-  if (isSegmentPage) {
-    const image = document.querySelector('picture');
-
-    console.log('decorate segment page: ', image);
-  } else {
-    console.log('Do nothing, this is not a segment page');
-  }
-}
-
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -222,7 +209,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   decorateHeroH1();
   decorateFocusPage('product');
-  decorateSegmentPage();
+  decorateFocusPage('segment');
   buildAutoBlocks(main);
   addRestartJourneyLink();
 }

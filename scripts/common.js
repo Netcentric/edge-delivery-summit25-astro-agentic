@@ -57,51 +57,49 @@ function addRestartJourneyLink() {
 
 function decorateFocusPage(pageType) {
   const parentElement = document.querySelector(`body.${pageType}-focus .default-content-wrapper`);
-  const focusH1 = document.querySelector(`body.${pageType}-focus .default-content-wrapper > h1:first-child`);
 
   if (!parentElement) {
     return;
   }
 
-  const productTitleWrapper = document.createElement('h2');
-  const groupElement = document.createElement('div');
   const subGroupElement = document.createElement('div');
-  const focusH2 = parentElement.querySelector('h2');
-  const description = parentElement.querySelector('p:last-child');
-  const focusList = parentElement.querySelector('ul');
+  const selectedItemElement = document.createElement('h2');
+  selectedItemElement.classList.add('content__header');
+
+  // Get all content elements in order
+  const elements = Array.from(parentElement.children);
+
+  const pictureParagraph = parentElement.querySelector('p:has(img)');
+  pictureParagraph?.classList.add('content__image');
+
+  subGroupElement.classList.add('content__body');
+
+  // Move all elements except the picture paragraph to __body
+  elements.forEach((element) => {
+    if (element !== pictureParagraph) {
+      subGroupElement.appendChild(element);
+    }
+  });
+
+  // Add specifications if they exist
   const specifications = document.querySelector('.specifications-wrapper');
-
-  groupElement.classList.add('group');
-  subGroupElement.classList.add('sub-group');
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedProductParam = urlParams.get('selectedProduct');
-
-  if (selectedProductParam) {
-    productTitleWrapper.innerHTML = `Selected product: ${selectedProductParam}`;
-  }
-
-  if (focusH1) {
-    groupElement.appendChild(productTitleWrapper);
-
-    subGroupElement.appendChild(focusH1);
-  }
-  if (focusH2) {
-    subGroupElement.appendChild(focusH2);
-  }
-  if (focusList) {
-    subGroupElement.appendChild(focusList);
-  }
-  if (description) {
-    subGroupElement.appendChild(description);
-  }
   if (specifications) {
     subGroupElement.appendChild(specifications);
   }
 
-  groupElement.appendChild(subGroupElement);
-
-  parentElement.appendChild(groupElement);
+  // Clear parent and reconstruct in correct order
+  parentElement.innerHTML = '';
+  if (pictureParagraph) {
+    parentElement.appendChild(pictureParagraph);
+  }
+  // Add the h2 and subgroup directly to parent
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentSelectionParam = urlParams.get('currentSelection');
+  if (currentSelectionParam) {
+    selectedItemElement.innerHTML = `Current Selection: ${currentSelectionParam}`;
+  }
+  parentElement.appendChild(selectedItemElement);
+  parentElement.appendChild(subGroupElement);
 }
 
 export {
