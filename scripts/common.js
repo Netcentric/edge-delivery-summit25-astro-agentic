@@ -92,6 +92,11 @@ function decorateFocusPage(pageType) {
     parentElement.appendChild(pictureParagraph);
   }
   // Add the h2 and subgroup directly to parent
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentSelectionParam = urlParams.get('currentSelection');
+  if (currentSelectionParam) {
+    selectedItemElement.innerHTML = `Current Selection: ${currentSelectionParam}`;
+  }
   parentElement.appendChild(selectedItemElement);
   parentElement.appendChild(subGroupElement);
 }
