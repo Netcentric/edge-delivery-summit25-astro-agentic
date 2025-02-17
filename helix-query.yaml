@@ -22,7 +22,7 @@ indices:
       - '/segments/**'
     properties:
       name:
-        select: head > meta[property="og:title"]
+        selectFirst: main h1
         value: attribute(el, "content")
       subtitle:
         selectFirst: main h2
