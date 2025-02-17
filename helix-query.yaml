@@ -26,16 +26,16 @@ indices:
         value: attribute(el, "content")
       subtitle:
         selectFirst: main h2
-        values: textContent(el)
+        value: textContent(el)
       profile:
         selectFirst: "#profile ~ p"
-        values: textContent(el)
+        value: textContent(el)
       lifestyle:
         selectFirst: "#lifestyle ~ p"
-        values: textContent(el)
+        value: textContent(el)
       needs:
         selectFirst: "#needs ~ p"
-        values: textContent(el)
+        value: textContent(el)
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
