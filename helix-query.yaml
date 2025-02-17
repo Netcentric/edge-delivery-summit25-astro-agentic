@@ -25,16 +25,16 @@ indices:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
       subtitle:
-        select: main h2
+        selectFirst: main h2
         values: textContent(el)
       profile:
-        select: "#profile ~ p"
+        selectFirst: "#profile ~ p"
         values: textContent(el)
       lifestyle:
-        select: "#lifestyle ~ p"
+        selectFirst: "#lifestyle ~ p"
         values: textContent(el)
       needs:
-        select: "#needs ~ p"
+        selectFirst: "#needs ~ p"
         values: textContent(el)
       image: 
         select: head > meta[property="og:image"]
