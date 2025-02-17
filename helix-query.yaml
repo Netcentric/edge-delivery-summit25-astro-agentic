@@ -28,13 +28,13 @@ indices:
         select: main h2
         values: textContent(el)
       profile:
-        select: "#profile > p"
+        select: "#profile ~ p"
         values: textContent(el)
       lifestyle:
-        select: "#lifestyle > p"
+        select: "#lifestyle ~ p"
         values: textContent(el)
       needs:
-        select: "#needs > p"
+        select: "#needs ~ p"
         values: textContent(el)
       image: 
         select: head > meta[property="og:image"]
