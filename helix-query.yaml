@@ -7,6 +7,12 @@ indices:
       name:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
+      recommended_dosage:
+        select: main ul > li:first-child
+        value: attribute(el)
+      purpose:
+        select: main ul > li:last-child
+        value: attribute(el)
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
@@ -26,7 +32,7 @@ indices:
         value: attribute(el, "content")
       description:
         select: head > meta[property="og:description"]
-        value: textContent(el)
+        value: attribute(el, "content")
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
