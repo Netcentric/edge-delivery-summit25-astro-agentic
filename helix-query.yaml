@@ -9,16 +9,16 @@ indices:
         value: attribute(el, "content")
       recommended_dosage:
         select: main ul > li:first-child
-        value: attribute(el)
+        value: textContent(el)
       purpose:
         select: main ul > li:last-child
-        value: attribute(el)
+        value: textContent(el)
       ingredients_names:
         select: .specifications > div > div:first-child
-        values: attribute(el)
+        values: textContent(el)
       ingredients_amounts:
         select: .specifications > div > div:last-child
-        values: attribute(el)
+        values: textContent(el)
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
