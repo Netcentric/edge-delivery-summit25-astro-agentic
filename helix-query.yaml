@@ -13,6 +13,12 @@ indices:
       purpose:
         select: main ul > li:last-child
         value: attribute(el)
+      ingredients_names:
+        select: .specifications > div > div:first-child
+        values: attribute(el)
+      ingredients_amounts:
+        select: .specifications > div > div:last-child
+        values: attribute(el)
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
