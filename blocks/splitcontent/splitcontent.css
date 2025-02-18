@@ -29,7 +29,7 @@
     position: relative;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1fr .5fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
 }
 
@@ -37,6 +37,7 @@
     .splitcontent__content {
        grid-column: 1;
        grid-row: 1;
+       padding-left: 0;
     }
 
     .splitcontent__media {
