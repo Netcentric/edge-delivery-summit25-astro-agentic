@@ -1,6 +1,6 @@
 @import url('accessories.css');
-@import url('base-model.css');
-@import url('configuration-result.css');
+/* @import url('base-model.css'); */
+/* @import url('configuration-result.css'); */
 
 :root {
   /* colors */
@@ -35,6 +35,10 @@
 
   /* nav height */
   --nav-height: 0;
+
+  /* spacings */
+  --container-width: 1106px;  /* the max-width */
+  --min-padding: 2em;   /* padding on small screen */
 }
 
 @font-face {
@@ -206,22 +210,14 @@ main img {
 }
 
 /* sections */
-main .section {
-  padding: 64px 16px;
+.section {
+  margin-inline: max(var(--min-padding),50cqw - var(--container-width)/2);
+}
+.fullbleed {
+  margin-inline: min(-1*var(--min-padding),var(--container-width)/2 - 50cqw);
+  padding-inline: max(var(--min-padding),50cqw - var(--container-width)/2);
 }
 
-@media (width >= 600px) {
-  main .section {
-    padding: 64px 32px;
-  }
-}
-
-@media (width >= 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
-  }
-}
 
 @media (width >= 1920px) {
   h1 { font-size: var(--heading-font-size-xxxl) }

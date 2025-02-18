@@ -1,34 +1,123 @@
 main .hero-container > div {
   max-width: unset;
 }
-  
+
 main .hero-container {
   padding: 0;
 }
 
 .hero {
+  --bg-threshold: 20%;
+  --heading-font-size: 37px;
+  --headline-font-size: 84px;
+  --offset-image: 3%;
+  --scale-image: 1;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr .5fr;
+  background-image: linear-gradient(white, white),
+    url('https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/img/space.png');
+  background-size: 100% var(--bg-threshold),
+    cover;
+  background-repeat: no-repeat;
+  background-position: left bottom,
+    center;
+}
+
+.hero__image {
   position: relative;
-  padding: 32px;
-  min-height: 300px;
+  place-content: end;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.hero__image img {
+  margin-top: 0;
+}
+
+.hero__body {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 2rem;
+  color: white;
+  z-index: 1;
+  text-align: center;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
+  font-size: 37px;
+  line-height: 1.18;
+  font-weight: 100;
+  margin-block: 0;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero h1 + p {
+  font-weight: bold;
+  font-size: 84px;
+  line-height: 1.2;
+  margin-top: 30px;
+  margin-bottom: 0;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero a {
+  margin-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    --bg-threshold: 22%;
+    --heading-font-size: 24px;
+    --headline-font-size: 48px;
+    --offset-image: 0%;
+    --scale-image: 1;
+    grid-template-rows: 0.6fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    --bg-threshold: 25%;
+    --heading-font-size: 28px;
+    --headline-font-size: 64px;
+    --offset-image: 3%;
+    --scale-image: 1.8;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-rows: 1fr .28fr;
+    background-image: linear-gradient(white, white),
+      url('https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/img/space.png');
+    background-size: 100% var(--bg-threshold),
+      cover;
+    background-repeat: no-repeat;
+    background-position: left bottom,
+      center;
+    box-shadow: inset 0 -1px 0 0 white;
+  }
+
+  .hero__body {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .hero__image {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1/-1;
+    place-content: end;
+  }
+
+  .hero__image img {
+    scale: var(--scale-image);
+    position: absolute;
+    bottom: var(--offset-image);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero {
+    --bg-threshold: 29%;
+    --heading-font-size: 37px;
+    --headline-font-size: 84px;
+  }
 }
