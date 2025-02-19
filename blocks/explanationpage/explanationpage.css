@@ -1,0 +1,148 @@
+:root {
+    --text-color: #111;
+    --bg-color: #b9b3a9;
+}
+
+html {
+    max-width: 100vw;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+    transition: 0.3s ease-out;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    overscroll-behavior: none;
+}
+
+.container section {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
+section:not(#sectionPin, .pin-wrap-sticky) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+    padding: 50px 10vw;
+    margin: auto;
+    place-items: center;
+}
+
+.container img {
+    height: 80vh;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.container h1 {
+    font-size: clamp(1.5rem, 8vw + 1rem, 6rem);
+    line-height: 1;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    z-index: 4;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+.container h1 span {
+    display: block;
+}
+
+.container h2 {
+    font-size: 2rem;
+    max-width: 400px;
+}
+
+.credit a {
+    color: var(--text-color);
+}
+
+.container * {
+    box-sizing: border-box;
+}
+
+#sectionPin {
+    height: 100vh;
+    display: flex;
+    background: var(--text-color);
+    color: var(--bg-color);
+    overflow: scroll;
+}
+
+.pin-wrap {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px 10vw;
+}
+
+.pin-wrap > * {
+    min-width: 60vmax;
+    padding: 0 5vmax;
+}
+
+.container > p {
+    position: absolute;
+    bottom: 10vw;
+    right: 10vw;
+    width: 200px;
+    line-height: 1.5;
+}
+@supports(animation-timeline: view()) {
+    @keyframes move {
+        to {
+            /* Move horizontally so that right edge is aligned against the viewport */
+            transform: translateX(calc(-100% + 100vw));
+        }
+    }
+
+    #sectionPin {
+        /* Stretch it out, so that we create room for the horizontal scroll animation */
+        height: 500vh;
+        overflow: visible; /* To make position sticky work … */
+
+        view-timeline-name: --section-pin-tl;
+        view-timeline-axis: block;
+    }
+
+    .pin-wrap-sticky {
+        /* Stick to Top */
+        height: 100vh;
+        width: 100vw;
+        position: sticky;
+        top: 0;
+
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .pin-wrap {
+        height: 100vh;
+        width: 250vmax;
+
+        /* Hook animation */
+        will-change: transform;
+        animation: linear move forwards;
+
+        /* Link animation to view-timeline */
+        animation-timeline: --section-pin-tl;
+        animation-range: contain 0% contain 100%;
+    }
+}
