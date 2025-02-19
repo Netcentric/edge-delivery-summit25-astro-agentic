@@ -1,4 +1,3 @@
-export default async function decorate(block) {
-  console.log(block);
+export default async function decorate(block) { // eslint-disable-line no-unused-vars
   // NOP
 }

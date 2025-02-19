@@ -4,7 +4,7 @@ export default function decorate(block) {
   const featuresContent = [];
 
   // Process each feature div
-  Array.from(features).forEach(feature => {
+  Array.from(features).forEach((feature) => {
     if (!feature) return;
 
     // Safely get each element directly
@@ -17,13 +17,12 @@ export default function decorate(block) {
     title?.classList.add('feature__title');
     description?.classList.add('feature__desciption');
 
-
     // Only add feature if at least one element exists
     if (picture || title || description) {
       featuresContent.push({
         picture: picture ? picture.outerHTML : '',
         title: title ? title.outerHTML : '',
-        description: description ? description.outerHTML : ''
+        description: description ? description.outerHTML : '',
       });
     }
   });
@@ -32,7 +31,7 @@ export default function decorate(block) {
   if (featuresContent.length > 0) {
     const newHtml = `
       <ul class="features">
-        ${featuresContent.map(feature => `
+        ${featuresContent.map((feature) => `
           <li class="features__item">
             ${feature.picture}
             <div class="feature__content">
