@@ -7,6 +7,18 @@ indices:
       name:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
+      recommended_dosage:
+        select: main ul > li:first-child
+        value: textContent(el)
+      purpose:
+        select: main ul > li:last-child
+        value: textContent(el)
+      ingredients_names:
+        select: .specifications > div > div:first-child
+        values: textContent(el)
+      ingredients_amounts:
+        select: .specifications > div > div:last-child
+        values: textContent(el)
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
@@ -24,11 +36,11 @@ indices:
       name:
         select: head > meta[property="og:title"]
         value: attribute(el, "content")
+      description:
+        select: head > meta[property="og:description"]
+        value: attribute(el, "content")
       image: 
         select: head > meta[property="og:image"]
-        value: attribute(el, "content")
-      description: 
-        select: head > meta[property="og:description"]
         value: attribute(el, "content")
       lastModified:
         select: none

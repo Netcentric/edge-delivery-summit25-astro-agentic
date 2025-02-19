@@ -1,4 +1,4 @@
-export default async function decorate(block) {
+export default async function decorate() {
 
   // NOP
 }

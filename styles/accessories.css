@@ -31,6 +31,7 @@ body.segment-focus {
     .content__image {
         margin: 0;
     }
+
     .content__body {
         font-size: 20px;
         line-height: 1.35;
@@ -40,19 +41,23 @@ body.segment-focus {
         font-size: var(--heading-font-size-l);
         margin: 0;
     }
+
     h2 {
         font-size: var(--heading-font-size-s);
         margin-top: 20px;
     }
+
     h3 {
         font-size: 20px;
         line-height: 1.35;
         margin-bottom: 0;
         color: #476ABA;
     }
+
     h3+ p {
         margin-top: 0;
     }
+
     ul {
         margin-block: 22px;
         display: flex;
