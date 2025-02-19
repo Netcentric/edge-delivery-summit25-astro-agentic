@@ -1,7 +1,8 @@
+/* stylelint-disable selector-class-pattern */
+
 .ingredients {
     display: flex;
     align-items: stretch;
-    /* grid-template-columns: 1fr 1fr; */
 }
 
 .ingredient__name {
@@ -9,9 +10,11 @@
     line-height: 1.6;
     margin-top: 30px;
 }
+
 .ingredient__name:first-child {
     margin-top: 0;
 }
+
 .ingredient__amount {
     font-weight: 700;
     font-size: 24px;

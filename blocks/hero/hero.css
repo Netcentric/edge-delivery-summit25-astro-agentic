@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 main .hero-container > div {
   max-width: unset;
 }
@@ -64,24 +65,26 @@ main .hero-container {
   margin-top: 50px;
 }
 
-@media (min-width: 768px) {
+@media screen and (width >= 768px) {
   .hero {
     --bg-threshold: 22%;
     --heading-font-size: 24px;
     --headline-font-size: 48px;
     --offset-image: 0%;
     --scale-image: 1;
+
     grid-template-rows: 0.6fr 1fr;
   }
 }
 
-@media (min-width: 1024px) {
+@media screen and (width >= 1024px) {
   .hero {
     --bg-threshold: 25%;
     --heading-font-size: 28px;
     --headline-font-size: 64px;
     --offset-image: 3%;
     --scale-image: 1.8;
+
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr .28fr;
@@ -114,7 +117,7 @@ main .hero-container {
   }
 }
 
-@media (min-width: 1280px) {
+@media screen and (width >= 1280px) {
   .hero {
     --bg-threshold: 29%;
     --heading-font-size: 37px;

@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 .splitcontent {
   display: flex;
   flex-direction: row;
@@ -31,9 +33,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-}
 
-.splitcontent--reversed {
     .splitcontent__content {
        grid-column: 1;
        grid-row: 1;
