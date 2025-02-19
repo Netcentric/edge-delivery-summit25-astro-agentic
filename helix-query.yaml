@@ -56,9 +56,9 @@ indices:
       image: 
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
-      snippet: 
-        select: main
-        value: innerHTML(el)
+      specs: 
+        select: h1 ~ p
+        values: innerHTML(el)
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
