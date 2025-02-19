@@ -1,0 +1,44 @@
+/* stylelint-disable selector-class-pattern */
+
+.cta {
+  position: relative;
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cta__media picture,
+.cta__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  max-width: 683px;
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+  h2{
+    font-size: 37.34px;
+    line-height: 1.21;
+  }
+}
