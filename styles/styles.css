@@ -1,6 +1,8 @@
 @import url('accessories.css');
-@import url('base-model.css');
-@import url('configuration-result.css');
+
+/* @import url('base-model.css'); */
+
+/* @import url('configuration-result.css'); */
 
 :root {
   /* colors */
@@ -13,7 +15,6 @@
   --dark-teal: #11C7CC;
   --link-color: var(--dark-blue);
   --link-hover-color: #136ff6;
-
 
   /* fonts */
   --body-font-family: "Gellix", "Gellix-fallback";
@@ -35,6 +36,10 @@
 
   /* nav height */
   --nav-height: 0;
+
+  /* spacings */
+  --container-width: 1106px;  /* the max-width */
+  --min-padding: 2em;   /* padding on small screen */
 }
 
 @font-face {
@@ -87,10 +92,15 @@ h4, h5, h6 {
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
+
 h2 { font-size: var(--heading-font-size-xl) }
+
 h3 { font-size: var(--heading-font-size-l) }
+
 h4 { font-size: var(--heading-font-size-m) }
+
 h5 { font-size: var(--heading-font-size-s) }
+
 h6 { font-size: var(--heading-font-size-xs) }
 
 p, dl, ol, ul, pre, blockquote {
@@ -171,7 +181,6 @@ a.button.secondary, button.secondary {
   color: var(--text-color)
 }
 
-
 .button.icon-arrow-right::after  {
   content: '';
   background: url('/icons/arrow-right-bold.svg');
@@ -206,29 +215,26 @@ main img {
 }
 
 /* sections */
-main .section {
-  padding: 64px 16px;
+.section {
+  margin-inline: max(var(--min-padding),50cqw - var(--container-width)/2);
 }
 
-@media (width >= 600px) {
-  main .section {
-    padding: 64px 32px;
-  }
-}
-
-@media (width >= 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
-  }
+.fullbleed {
+  margin-inline: min(-1 * var(--min-padding),var(--container-width)/2 - 50cqw);
+  padding-inline: max(var(--min-padding),50cqw - var(--container-width)/2);
 }
 
 @media (width >= 1920px) {
   h1 { font-size: var(--heading-font-size-xxxl) }
+
   h2 { font-size: var(--heading-font-size-xxl) }
+
   h3 { font-size: var(--heading-font-size-xl) }
+
   h4 { font-size: var(--heading-font-size-l) }
+
   h5 { font-size: var(--heading-font-size-m) }
+
   h6 { font-size: var(--heading-font-size-s) }
 }
 
@@ -321,4 +327,13 @@ main .section.highlight {
   .spec-container .spec-value {
     font-size: 26px;
   }
+}
+
+/* LAYOUT */
+
+/* THEME */
+
+/* Using var for min-padding */
+.container {
+  margin-right: min(-1 * var(--min-padding), var(--container-width)/2 - 50cqw);
 }
