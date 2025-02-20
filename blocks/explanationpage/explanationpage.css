@@ -1,3 +1,11 @@
+/*OVERWRITE NORMAL SECTIONS OF ALL EDS*/
+.section.explanationpage-container{
+    margin-inline:0;
+}
+
+
+/*COPY PASTE OF EXAMPLE*/
+/*CLEANUP NEEDED*/
 :root {
     --text-color: #111;
     --bg-color: #b9b3a9;
@@ -24,7 +32,8 @@ body {
     overscroll-behavior: none;
 }
 
-.container section {
+/* WE HAD TO RENAME EXAMPLE AS CONTAINER2 BECAUSE EDS ALREADY HAD A CONTAINER */
+.container2 section {
     min-height: 100vh;
     width: 100%;
     max-width: 100vw;
@@ -41,14 +50,14 @@ section:not(#sectionPin, .pin-wrap-sticky) {
     place-items: center;
 }
 
-.container img {
+.container2 img {
     height: 80vh;
     width: auto;
     max-width: 100%;
     object-fit: cover;
 }
 
-.container h1 {
+.container2 h1 {
     font-size: clamp(1.5rem, 8vw + 1rem, 6rem);
     line-height: 1;
     font-weight: 800;
@@ -60,11 +69,11 @@ section:not(#sectionPin, .pin-wrap-sticky) {
     overflow-wrap: break-word;
     hyphens: auto;
 }
-.container h1 span {
+.container2 h1 span {
     display: block;
 }
 
-.container h2 {
+.container2 h2 {
     font-size: 2rem;
     max-width: 400px;
 }
@@ -73,7 +82,7 @@ section:not(#sectionPin, .pin-wrap-sticky) {
     color: var(--text-color);
 }
 
-.container * {
+.container2 * {
     box-sizing: border-box;
 }
 
@@ -98,7 +107,7 @@ section:not(#sectionPin, .pin-wrap-sticky) {
     padding: 0 5vmax;
 }
 
-.container > p {
+.container2 > p {
     position: absolute;
     bottom: 10vw;
     right: 10vw;
@@ -145,4 +154,16 @@ section:not(#sectionPin, .pin-wrap-sticky) {
         animation-timeline: --section-pin-tl;
         animation-range: contain 0% contain 100%;
     }
+}
+
+/* I THINK YOU CAN START DOING SPECIFIC THINGS IN HERE */
+/* AND MOVE FROM UP TO HERE ALL COSMETICS NOT NEEDED FOR SCROLLING BEHAVIOUR*/
+.screen--1 {
+    background-color: red;
+}
+.screen--2{
+    background-color: green;
+}
+.screen--3{
+    background-color: blue;
 }
