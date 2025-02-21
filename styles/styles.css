@@ -147,7 +147,9 @@ a:hover {
 /* buttons */
 a.button:any-link, button {
   font-family: var(--body-font-family);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   box-sizing: border-box;
   text-decoration: none;
   border: 2px solid transparent;
@@ -163,6 +165,16 @@ a.button:any-link, button {
   overflow: hidden;
   text-overflow: ellipsis;
   border-radius: 30px;
+}
+
+a.button::after, button::after {
+    content: '';
+    background: url('../../icons/arrow.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
