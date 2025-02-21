@@ -65,7 +65,7 @@ main .hero-container {
   margin-top: 50px;
 }
 
-.hero .button:after{
+.hero .button::after{
     transform: rotate(90deg);
 }
 

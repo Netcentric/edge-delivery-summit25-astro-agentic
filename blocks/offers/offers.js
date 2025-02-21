@@ -3,7 +3,7 @@ export default function decorate(block) {
 
   const titleWrapper = block.children[0];
   const titleElement = titleWrapper?.querySelector('h2');
-  titleElement?.classList.add('offers__title');
+  titleElement?.classList.add('offers-title');
   const sectionTitle = titleElement?.outerHTML || '';
 
   const offersWrapper = block.children[1];
@@ -18,10 +18,10 @@ export default function decorate(block) {
     const description = offer.querySelector('h4 + p');
     const button = offer.querySelector('.button-container a');
 
-    picture?.classList.add('offers__image');
-    title?.classList.add('offers__cardtitle');
-    description?.classList.add('offers__description');
-    button?.classList.add('offers__button');
+    picture?.classList.add('offers-image');
+    title?.classList.add('offers-cardtitle');
+    description?.classList.add('offers-description');
+    button?.classList.add('offers-button');
 
     if (picture && title && description && button) {
       offersContent.push({
@@ -36,11 +36,11 @@ export default function decorate(block) {
   if (offersContent.length > 0) {
     const newHtml = `
       ${sectionTitle}
-      <ul class="offers__list">
+      <ul class="offers-list">
         ${offersContent.map((offer) => `
-          <li class="offers__item">
+          <li class="offers-item">
             ${offer.picture}
-            <div class="offers__content">
+            <div class="offers-content">
               ${offer.title}
               ${offer.description}
               <div class="offers__button-container">

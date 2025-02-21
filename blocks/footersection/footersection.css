@@ -25,14 +25,14 @@
     margin-top: 20px;
 }
 
-.footersection .button-container a {
-    text-decoration: underline;
-}
-
 .footersection ul a {
     font-size: 20px;
     line-height: 1;
     font-weight: 600;
+}
+
+.footersection .button-container a {
+    text-decoration: underline;
 }
 
 .footersection p {
@@ -60,7 +60,7 @@
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .footersection {
         padding-top: 50px;
         padding-bottom: 50px;

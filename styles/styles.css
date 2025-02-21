@@ -166,7 +166,8 @@ a.button:any-link, button {
   text-overflow: ellipsis;
   border-radius: 30px;
 }
-a.button:after, button:after {
+
+a.button::after, button::after {
     content: '';
     background: url('../../icons/arrow.svg');
     background-size: cover;
