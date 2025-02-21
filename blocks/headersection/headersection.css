@@ -1,0 +1,42 @@
+/* stylelint-disable selector-class-pattern */
+
+.headersection {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 6px 0;
+  background: white;
+}
+
+.headersection__logo {
+  max-width: 133px;
+  margin-top: 8px;
+}
+
+.headersection__logo img {
+  width: 100%;
+  height: auto;
+
+}
+
+.headersection__title {
+  padding-left: 40px;
+  border-left: 1px solid var(--midnight-blue-color);
+  font-size: 20px;
+  line-height: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.headersection__title h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--midnight-blue-color);
+}
+
+.headersection .headersection__button.headersection__button {
+    margin: 0;
+  justify-self: end;
+}
