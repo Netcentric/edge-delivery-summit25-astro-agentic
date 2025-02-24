@@ -16,7 +16,12 @@ export default function decorate(block) {
     const picture = offer.querySelector('picture');
     const title = offer.querySelector('h4');
     const description = offer.querySelector('h4 + p');
-    const button = offer.querySelector('.button-container a');
+    const button = offer.querySelector('a');
+
+    // Clean up description by removing any links
+    if (description) {
+      description.querySelector('a')?.remove();
+    }
 
     picture?.classList.add('offers-image');
     title?.classList.add('offers-cardtitle');
