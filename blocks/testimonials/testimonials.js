@@ -2,28 +2,31 @@ export default function decorate(block) {
   block.classList.add('fullbleed');
 
   // Get and process section title
-  const titleWrapper = block.children[0];
-  const titleElement = titleWrapper?.querySelector('h2');
+  const titleDiv = block.firstElementChild?.firstElementChild;
+  const titleElement = titleDiv?.querySelector('h2');
   titleElement?.classList.add('testimonials__title');
   const sectionTitle = titleElement?.outerHTML || '';
 
-  // Get testimonials from the second div's children
-  const testimonialsWrapper = block.children[1];
-  const testimonials = Array.from(testimonialsWrapper?.children || []);
+  // Get testimonials from the second div directly
+  const testimonialsDiv = block.children[1];
+  const testimonials = testimonialsDiv?.children || [];
   const testimonialsContent = [];
 
   // Process each testimonial div
-  testimonials.forEach((testimonial) => {
-    if (!testimonial) return;
-
-    const [picturePara, quotePara, authorPara] = testimonial.querySelectorAll('p');
+  Array.from(testimonials).forEach(testimonial => {
+    const [picturePara, quotePara] = testimonial.querySelectorAll('p');
     const picture = picturePara?.querySelector('picture');
 
-    if (picture && quotePara && authorPara) {
+    if (picture && quotePara) {
+      // Get the full HTML content and split by <br>
+      const [quoteWithTags, author] = quotePara.innerHTML.split('<br>');
+      // Remove quotes from start (^") and end ("$) of the string
+      const quote = quoteWithTags.replace(/^"|"$/g, '');
+
       testimonialsContent.push({
         picture: picture.outerHTML,
-        quote: quotePara.textContent,
-        author: authorPara.textContent,
+        quote,
+        author,
       });
     }
   });
@@ -33,7 +36,7 @@ export default function decorate(block) {
     const newHtml = `
       ${sectionTitle}
       <ul class="testimonials__list">
-        ${testimonialsContent.map((testimonial) => `
+        ${testimonialsContent.map(testimonial => `
           <li class="testimonials__item">
             <div class="testimonials__media">
               ${testimonial.picture}
