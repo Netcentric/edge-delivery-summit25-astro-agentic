@@ -26,7 +26,7 @@ export default function decorate(block) {
     picture?.classList.add('offers-image');
     title?.classList.add('offers-cardtitle');
     description?.classList.add('offers-description');
-    button?.classList.add('offers-button');
+    button?.classList.add('button', 'offers-button');
 
     if (picture && title && description && button) {
       offersContent.push({
