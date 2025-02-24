@@ -11,7 +11,6 @@ export default function decorate(block) {
   const offersContent = [];
 
   offers.forEach((offer) => {
-
     if (!offer) return;
 
     const picture = offer.querySelector('picture');

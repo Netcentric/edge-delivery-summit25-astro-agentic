@@ -13,7 +13,7 @@ export default function decorate(block) {
   const testimonialsContent = [];
 
   // Process each testimonial div
-  Array.from(testimonials).forEach(testimonial => {
+  Array.from(testimonials).forEach((testimonial) => {
     const [picturePara, quotePara] = testimonial.querySelectorAll('p');
     const picture = picturePara?.querySelector('picture');
 
