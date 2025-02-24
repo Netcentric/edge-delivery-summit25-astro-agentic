@@ -6,7 +6,7 @@ export default function decorate(block) {
   const picture = pictureWrapper.querySelector('picture');
 
   // Transform ingredients into definition list items
-  const dlItems = ingredientDivs.map(div => {
+  const dlItems = ingredientDivs.map((div) => {
     const p = div.querySelector('p');
     const strong = p.querySelector('strong');
     const amount = p.textContent.split(':')[1].trim();
@@ -25,7 +25,6 @@ export default function decorate(block) {
     <div class="ingredients__media">
       ${picture.outerHTML}
     </div>
-
   `;
 
   block.innerHTML = newHtml;
