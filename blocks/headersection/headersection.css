@@ -5,8 +5,7 @@
   grid-template-columns: auto auto 1fr;
   align-items: center;
   gap: 20px;
-  padding: 6px 0;
-  background: white;
+  padding-block: 6px;
 }
 
 .headersection__logo {
@@ -16,8 +15,6 @@
 
 .headersection__logo img {
   width: 100%;
-  height: auto;
-
 }
 
 .headersection__title {
@@ -36,7 +33,9 @@
   color: var(--midnight-blue-color);
 }
 
+
+/* We add a double selector to increase specificit and avoid using important */
 .headersection .headersection__button.headersection__button {
-    margin: 0;
+  margin: 0;
   justify-self: end;
 }
