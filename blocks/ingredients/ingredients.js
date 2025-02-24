@@ -1,24 +1,19 @@
 export default function decorate(block) {
-  const [firstEl, secondEl] = block.firstElementChild.children;
+  // Get all direct children divs
+  const [pictureWrapper, ...ingredientDivs] = block.children;
 
-  // Determine which element has the picture
-  const hasPicture = (el) => el.querySelector('picture');
-  const pictureEl = hasPicture(firstEl) ? firstEl : secondEl;
-  const listEl = hasPicture(firstEl) ? secondEl : firstEl;
+  // Get the picture from first div
+  const picture = pictureWrapper.querySelector('picture');
 
-  // Add reverse class if picture is in second position
-  if (hasPicture(secondEl)) {
-    block.classList.add('ingredients--reversed');
-  }
+  // Transform ingredients into definition list items
+  const dlItems = ingredientDivs.map((div) => {
+    const p = div.querySelector('p');
+    const strong = p.querySelector('strong');
+    const amount = p.textContent.split(':')[1].trim();
 
-  // Transform list items into definition list entries
-  const listItems = listEl.querySelectorAll('li');
-  const dlItems = Array.from(listItems).map((li) => {
-    const text = li.textContent;
-    const [ingredient, amount] = text.split(':').map((s) => s.trim());
     return `
-        <dt class="ingredient__name">${ingredient}</dt>
-        <dd class="ingredient__amount">${amount}</dd>
+      <dt class="ingredient__name">${strong.textContent.replace(':', '')}</dt>
+      <dd class="ingredient__amount">${amount}</dd>
     `;
   }).join('');
 
@@ -28,7 +23,7 @@ export default function decorate(block) {
       ${dlItems}
     </dl>
     <div class="ingredients__media">
-      ${pictureEl.innerHTML}
+      ${picture.outerHTML}
     </div>
   `;
 
