@@ -76,14 +76,16 @@ body.product-focus .default-content-wrapper p:first-child img {
 
 .narrow-screen-disclaimer {
   display: none;
+  visibility: hidden;
 }
 
 @media (width < 1024px) {
   .narrow-screen-disclaimer {
+    visibility: visible;
+    display: flex;
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -104,16 +106,19 @@ body.product-focus .default-content-wrapper p:first-child img {
       overflow: hidden;
       margin-bottom: 50px;
     }
+
     p{
       margin-block: 0;
     };
+
     p+p {
       margin-top: 0;
     }
   }
 
   /* Make all other content inert when disclaimer is shown */
-  .narrow-screen-disclaimer ~ * {
+  main:has(.narrow-screen-disclaimer) > :not(.narrow-screen-disclaimer) {
+    /* stylelint-disable-next-line property-no-unknown */
     inert: true;
   }
 }
