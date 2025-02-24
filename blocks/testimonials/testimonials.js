@@ -36,7 +36,7 @@ export default function decorate(block) {
     const newHtml = `
       ${sectionTitle}
       <ul class="testimonials__list">
-        ${testimonialsContent.map(testimonial => `
+        ${testimonialsContent.map((testimonial) => `
           <li class="testimonials__item">
             <div class="testimonials__media">
               ${testimonial.picture}
