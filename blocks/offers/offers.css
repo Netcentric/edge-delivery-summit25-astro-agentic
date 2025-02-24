@@ -54,6 +54,10 @@
     margin: 25px 0 0;
 }
 
+.button.offers-button::after {
+    background: url('../../icons/arrow--light.svg');
+}
+
 .offers-title {
     max-width: 1106px;
     margin: 0 auto 40px;
