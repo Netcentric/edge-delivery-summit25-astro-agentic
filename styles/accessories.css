@@ -1,5 +1,4 @@
-/* stylelint-disable no-descending-specificity */
-/* stylelint-disable selector-class-pattern */
+/* stylelint-disable no-descending-specificity, selector-class-pattern */
 
 body.product-focus .section {
   padding: 0;
@@ -74,5 +73,49 @@ body.product-focus .default-content-wrapper p:first-child img {
   height: 100vh;
   object-fit: contain;
 }
-/* stylelint-enable no-descending-specificity */
-/* stylelint-enable selector-class-pattern */
+
+.narrow-screen-disclaimer {
+  display: none;
+}
+
+@media (width < 1024px) {
+  .narrow-screen-disclaimer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-30);
+    text-align: center;
+    color: var(--midnight-blue-color);
+    background: url('https://agentic.innovationlab.cx/app/welcome-bg-Bgd49q_Z.png');
+    background-size: cover;
+    background-position: bottom;
+
+    h1{
+      margin-block: 0;
+    }
+
+    .icon {
+      width: 154px;
+      height: 91px;
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+    p{
+      margin-block: 0;
+    };
+    p+p {
+      margin-top: 0;
+    }
+  }
+
+  /* Make all other content inert when disclaimer is shown */
+  .narrow-screen-disclaimer ~ * {
+    inert: true;
+  }
+}
+
+/* stylelint-enable no-descending-specificity, selector-class-pattern */
