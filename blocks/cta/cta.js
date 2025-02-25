@@ -1,11 +1,16 @@
 export default function decorate(block) {
   block.classList.add('fullbleed');
 
-  const [pictureDiv, contentDiv] = block.firstElementChild.children;
+  const [pictureDiv, contentDiv, buttonDiv] = block.firstElementChild.children;
 
   // Get elements
   const picture = pictureDiv.querySelector('picture');
-  const [title, description, ctaText] = contentDiv.querySelectorAll('h2, p');
+  const [title, description] = contentDiv.querySelectorAll('h2, p');
+  const button = buttonDiv?.querySelector('a');
+
+  if (button) {
+    button.classList.add('button', 'icon-arrow-right');
+  }
 
   // Create new structure
   const newHtml = `
@@ -15,7 +20,7 @@ export default function decorate(block) {
     <div class="cta__content">
       ${title.outerHTML}
       ${description.outerHTML}
-      <a href="#" class="button">${ctaText.textContent}</a>
+      ${button?.outerHTML || ''}
     </div>
   `;
 
