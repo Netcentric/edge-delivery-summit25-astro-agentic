@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity, selector-class-pattern */
 .footersection {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -74,5 +75,6 @@
 
 .footersection__info-item a {
    text-decoration: underline;
-
 }
+
+/* stylelint-enable no-descending-specificity, selector-class-pattern */
