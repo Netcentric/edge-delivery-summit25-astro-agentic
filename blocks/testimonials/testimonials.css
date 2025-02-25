@@ -32,6 +32,10 @@
     text-align: left;
 }
 
+.testimonials__media img {
+    border-radius: 100%;
+}
+
 .testimonials__quote{
     margin: 0;
     line-height: 1.3;

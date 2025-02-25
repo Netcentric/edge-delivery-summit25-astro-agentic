@@ -16,8 +16,8 @@ import {
 import {
   addPageHeader,
   addRestartJourneyLink,
-  decorateHeroH1,
   decorateFocusPage,
+  addNarrowScreenDisclaimer,
 } from './common.js';
 
 function addSpeedInformation(info, containerElement, name, splitWords = false) {
@@ -207,7 +207,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   decorateSections(main);
   decorateBlocks(main);
-  decorateHeroH1();
+  addNarrowScreenDisclaimer();
   decorateFocusPage('product');
   decorateFocusPage('segment');
   buildAutoBlocks(main);
