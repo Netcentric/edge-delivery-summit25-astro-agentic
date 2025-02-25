@@ -5,13 +5,9 @@ export default function decorate(block) {
   const [titleDiv, ...testimonialDivs] = block.children;
   const testimonialsContent = [];
 
-  console.log('testimonialDivs:', testimonialDivs);
-
   // Process each testimonial div
   testimonialDivs.forEach((testimonial) => {
     const [pictureDiv, quoteDiv, authorDiv] = testimonial.children;
-
-    console.log('Divs:', { pictureDiv, quoteDiv, authorDiv });
 
     const picture = pictureDiv?.querySelector('picture');
     const quote = quoteDiv?.querySelector('p')?.textContent;
@@ -21,7 +17,7 @@ export default function decorate(block) {
       testimonialsContent.push({
         picture: picture.outerHTML,
         quote,
-        author
+        author,
       });
     }
   });
