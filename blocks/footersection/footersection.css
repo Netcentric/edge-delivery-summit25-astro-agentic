@@ -71,3 +71,8 @@
         margin: 20px 0 0;
     }
 }
+
+.footersection__info-item a {
+   text-decoration: underline;
+
+}
