@@ -195,7 +195,7 @@ a.button.secondary, button.secondary {
 
 .button.icon-arrow-right::after  {
   content: '';
-  background: url('/icons/arrow-right-bold.svg');
+  background: url('/icons/arrow-right.svg');
   fill: inherit;
   width: 20px;
   height: 20px;
