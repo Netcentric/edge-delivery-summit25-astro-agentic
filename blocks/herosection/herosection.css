@@ -64,6 +64,7 @@ main .herosection-container {
 .herosection a {
   margin-top: 50px;
 }
+
 .herosection .icon-arrow-right::after {
   rotate: 90deg;
 }
