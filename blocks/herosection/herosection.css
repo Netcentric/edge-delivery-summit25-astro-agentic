@@ -1,13 +1,13 @@
 /* stylelint-disable selector-class-pattern */
-main .hero-container > div {
+main .herosection-container > div {
   max-width: unset;
 }
 
-main .hero-container {
+main .herosection-container {
   padding: 0;
 }
 
-.hero {
+.herosection {
   --bg-threshold: 20%;
   --heading-font-size: 37px;
   --headline-font-size: 84px;
@@ -26,18 +26,18 @@ main .hero-container {
     center;
 }
 
-.hero__image {
+.herosection__image {
   position: relative;
   place-content: end;
   grid-column: 1;
   grid-row: 2;
 }
 
-.hero__image img {
+.herosection__image img {
   margin-top: 0;
 }
 
-.hero__body {
+.herosection__body {
   grid-column: 1;
   grid-row: 1;
   padding: 2rem;
@@ -46,14 +46,14 @@ main .hero-container {
   text-align: center;
 }
 
-.hero h1 {
+.herosection h1 {
   font-size: 37px;
   line-height: 1.18;
   font-weight: 100;
   margin-block: 0;
 }
 
-.hero h1 + p {
+.herosection h1 + p {
   font-weight: bold;
   font-size: 84px;
   line-height: 1.2;
@@ -61,8 +61,12 @@ main .hero-container {
   margin-bottom: 0;
 }
 
-.hero a {
+.herosection a {
   margin-top: 50px;
+}
+
+.herosection .icon-arrow-right::after {
+  rotate: 90deg;
 }
 
 .hero .button::after{
@@ -70,7 +74,7 @@ main .hero-container {
 }
 
 @media screen and (width >= 768px) {
-  .hero {
+  .herosection {
     --bg-threshold: 22%;
     --heading-font-size: 24px;
     --headline-font-size: 48px;
@@ -82,7 +86,7 @@ main .hero-container {
 }
 
 @media screen and (width >= 1024px) {
-  .hero {
+  .herosection {
     --bg-threshold: 25%;
     --heading-font-size: 28px;
     --headline-font-size: 64px;
@@ -102,19 +106,19 @@ main .hero-container {
     box-shadow: inset 0 -1px 0 0 white;
   }
 
-  .hero__body {
+  .herosection__body {
     grid-column: 2;
     text-align: left;
   }
 
-  .hero__image {
+  .herosection__image {
     position: relative;
     grid-column: 1;
     grid-row: 1/-1;
     place-content: end;
   }
 
-  .hero__image img {
+  .herosection__image img {
     scale: var(--scale-image);
     position: absolute;
     bottom: var(--offset-image);
@@ -122,7 +126,7 @@ main .hero-container {
 }
 
 @media screen and (width >= 1280px) {
-  .hero {
+  .herosection {
     --bg-threshold: 29%;
     --heading-font-size: 37px;
     --headline-font-size: 84px;
