@@ -17,8 +17,6 @@ main .hero-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr .5fr;
-  background-image: linear-gradient(white, white),
-    url('https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/img/space.png');
   background-size: 100% var(--bg-threshold),
     cover;
   background-repeat: no-repeat;
@@ -92,8 +90,6 @@ main .hero-container {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr .28fr;
-    background-image: linear-gradient(white, white),
-      url('https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/img/space.png');
     background-size: 100% var(--bg-threshold),
       cover;
     background-repeat: no-repeat;
