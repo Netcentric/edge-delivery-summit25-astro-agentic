@@ -1,17 +1,19 @@
-name: Invalidate CloudFront Cache on Code Push
+name: Invalidate CloudFront Cache on Code Push or Doc Publish
 
 on:
   push:
     branches:
       - main
 
+  repository_dispatch:
+    types:
+      - resource-published
+      - resource-unpublished
+
 jobs:
   invalidate_cache:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
