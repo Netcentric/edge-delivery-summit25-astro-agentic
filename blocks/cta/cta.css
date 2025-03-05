@@ -25,7 +25,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(0 0 0 / 30%);
   mix-blend-mode: multiply;
 }
 
