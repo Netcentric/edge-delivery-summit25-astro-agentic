@@ -34,6 +34,8 @@
 
 .testimonials__media img {
     border-radius: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
 }
 
 .testimonials__quote{
