@@ -5,6 +5,10 @@
 body.product-focus,
 body.segment-focus {
     /* LAYOUT */
+    .section {
+        margin-inline: 0;
+    }
+
     .default-content-wrapper {
         display: grid;
         grid-template-areas:
