@@ -56,13 +56,14 @@ main .herosection-container {
 .herosection h1 + p {
   font-weight: bold;
   font-size: 84px;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-top: 30px;
   margin-bottom: 0;
 }
 
-.herosection a {
+.herosection.herosection a {
   margin-top: 50px;
+  margin-left: 0;
 }
 
 .herosection .icon-arrow-right::after {
@@ -87,7 +88,7 @@ main .herosection-container {
 
 @media screen and (width >= 1024px) {
   .herosection {
-    --bg-threshold: 25%;
+    --bg-threshold: 22%;
     --heading-font-size: 28px;
     --headline-font-size: 64px;
     --offset-image: 3%;
@@ -97,13 +98,23 @@ main .herosection-container {
     grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr .28fr;
     background-image: linear-gradient(white, white),
-      url('https://main--edge-delivery-summit25-astro-agentic--netcentric.aem.live/img/space.png');
+      url('https://agentic.innovationlab.cx/img/stage-bg-1.jpg');
     background-size: 100% var(--bg-threshold),
       cover;
     background-repeat: no-repeat;
     background-position: left bottom,
       center;
     box-shadow: inset 0 -1px 0 0 white;
+
+    &.enthusiastic {
+      background-image: linear-gradient(white, white),
+      url('https://agentic.innovationlab.cx/img/stage-bg-2.jpg');
+    }
+
+    &.formal {
+      background-image: linear-gradient(white, white),
+      url('https://agentic.innovationlab.cx/img/stage-bg-5.jpg');
+    }
   }
 
   .herosection__body {
@@ -127,7 +138,7 @@ main .herosection-container {
 
 @media screen and (width >= 1280px) {
   .herosection {
-    --bg-threshold: 29%;
+
     --heading-font-size: 37px;
     --headline-font-size: 84px;
   }
