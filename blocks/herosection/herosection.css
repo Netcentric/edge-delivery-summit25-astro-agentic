@@ -138,7 +138,6 @@ main .herosection-container {
 
 @media screen and (width >= 1280px) {
   .herosection {
-
     --heading-font-size: 37px;
     --headline-font-size: 84px;
   }
