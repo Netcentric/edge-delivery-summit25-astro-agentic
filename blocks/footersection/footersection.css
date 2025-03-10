@@ -1,0 +1,80 @@
+/* stylelint-disable no-descending-specificity, selector-class-pattern */
+.footersection {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+    background: var(--midnight-blue-color);
+    color: var(--background-color);
+}
+
+.footersection a {
+    color: var(--background-color);
+}
+
+.footersection ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px 48px;
+    margin: 33px 0 0;
+    padding: 0;
+}
+
+.footersection .button-container {
+    margin-top: 20px;
+}
+
+.footersection ul a {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.footersection .button-container a {
+    text-decoration: underline;
+}
+
+.footersection p {
+    margin: 0;
+}
+
+.footersection>div:last-child {
+    margin-top: 36px;
+}
+
+.footersection>div:last-child p {
+    font-size: 18px;
+}
+
+.footersection picture {
+    display: inline-block;
+    width: 132px;
+}
+
+.footersection ul picture {
+    width: 24px;
+}
+
+.footersection a[href^="mailto:"] {
+    text-decoration: underline;
+}
+
+@media (width <= 768px) {
+    .footersection {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .footersection ul {
+        gap: 10px 20px;
+        margin: 20px 0 0;
+    }
+}
+
+.footersection__info-item a {
+   text-decoration: underline;
+}
+
+/* stylelint-enable no-descending-specificity, selector-class-pattern */
