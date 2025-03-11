@@ -98,7 +98,7 @@ main .herosection-container {
     grid-template-columns: 1fr 1.2fr;
     grid-template-rows: 1fr .28fr;
     background-image: linear-gradient(white, white),
-      url('https://agentic.innovationlab.cx/img/stage-bg-1.jpg');
+      url('https://agentic.innovationlab.cx/img/hero-bg-default.jpg');
     background-size: 100% var(--bg-threshold),
       cover;
     background-repeat: no-repeat;
@@ -108,12 +108,12 @@ main .herosection-container {
 
     &.enthusiastic {
       background-image: linear-gradient(white, white),
-      url('https://agentic.innovationlab.cx/img/stage-bg-2.jpg');
+      url('https://agentic.innovationlab.cx/img/hero-bg-enthusiastic.jpg');
     }
 
     &.formal {
       background-image: linear-gradient(white, white),
-      url('https://agentic.innovationlab.cx/img/stage-bg-5.jpg');
+      url('https://agentic.innovationlab.cx/img/hero-bg-formal.jpg');
     }
   }
 
