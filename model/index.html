@@ -9,31 +9,31 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
 		@font-face {
-		font-family: Gellix;
-		font-style: normal;
-		font-weight: 550;
-		font-display: swap;
-		src: url('fonts/Gellix-SemiBold_R.woff2') format('woff2');
-		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-family: Gellix;
+			font-style: normal;
+			font-weight: 550;
+			font-display: swap;
+			src: url('fonts/Gellix-SemiBold_R.woff2') format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 
 		@font-face {
-		font-family: Gellix;
-		font-style: normal;
-		font-weight: 400;
-		font-display: swap;
-		src: url('fonts/Gellix-Regular_R.woff2') format('woff2');
-		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-family: Gellix;
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: url('fonts/Gellix-Regular_R.woff2') format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 
 
 		@font-face {
-		font-family: Gellix;
-		font-style: normal;
-		font-weight: 300;
-		font-display: swap;
-		src: url('fonts/Gellix-Light_R.woff2') format('woff2');
-		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			font-family: Gellix;
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: url('fonts/Gellix-Light_R.woff2') format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 
         body { 
@@ -423,8 +423,6 @@
 			content: counter(list-counter, decimal-leading-zero) ". "; /* Format the counter with leading zero */
 		}
 
-
-
 		/* Animation Section ***************************************************/
 
 		/* Typing animation*/
@@ -674,10 +672,6 @@
 			</div>
 		</div>
 
-		<!-- <div class="carousel-item klevi">
-			<img src="assets/Benefits.png" alt="Image 1">
-		</div> -->
-
 		<div id="carousel-1" class="carousel-item">
 		  <div class="carousel-text carousel-item-padding-block">
 			<div class="text-top">
@@ -905,10 +899,6 @@
 				  <p class="title-font">Discover our smart Search <br>Solution for Seamless Conversations</p>
 				  <p class="second-text">Discover how we enhance semantic search with an intelligent chatbot, 
 					  delivering more intuitive and engaging interactions.</p>
-				  <!-- <div class="horizontal-carousel-last-section left-arrow-direction">
-					<img class="arrow" src="assets/arrow-left.gif" alt="Image 2">
-					<p class="second-text">Explore the other screens</p>
-				  </div> -->
 				</div>
 				<div class="horizontal-carousel-image horizontal-container">
 				  <img class="horizontal-last-section-image" src="assets/last-section-image-1.jpg" alt="Image 2">
@@ -916,10 +906,6 @@
 				  <p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
 					  unlocking new capabilities for data-driven experiences.
 				  </p>
-				  <!-- <div class="horizontal-carousel-last-section right-arrow-direction">
-					<img class="arrow" src="assets/arrow-right.gif" alt="Image 2">
-					<p class="second-text">Explore the other screens</p>
-				  </div> -->
 				</div>
 			</div>
 			<div class="arrow-container">
@@ -940,6 +926,96 @@
 		document.getElementById("discover-button").addEventListener("click", function () {
 			const nextSection = document.getElementById("carousel-video"); // The next carousel item
 			nextSection.scrollIntoView({ behavior: "smooth" });
+		});
+
+		// Execute function only if the URL has a paramater.. ?auto .. in the end
+		document.addEventListener("DOMContentLoaded", function() {
+		// Check if the URL contains the "auto" parameter
+		const urlParams = new URLSearchParams(window.location.search);
+		const autoParam = urlParams.has('auto');
+		
+			// Only execute the script logic if the auto parameter exists
+			if (autoParam) {
+				// Your existing logic goes here
+				console.log("Auto parameter detected - executing script logic");
+
+				// Auto scroll function
+				function setupAutoScroll() {
+					const carousel = document.getElementById("carousel");
+					const slides = document.querySelectorAll(".carousel-item");
+					const scrollInterval = 5000; // 5 seconds
+					let currentIndex = 0;
+					let scrollTimer;
+					let userInteracted = false;
+
+					// Function to scroll to the next slide
+					function scrollToNextSlide() {
+						// If user has interacted with the page, don't auto-scroll
+						if (userInteracted) {
+							return;
+						}
+
+						// Increment the current index
+						currentIndex++;
+
+						// If we've reached the end, reload the page
+						if (currentIndex >= slides.length) {
+							window.scrollTo(0, 0);
+							location.reload();
+							return;
+						}
+
+						// Scroll to the next slide
+						slides[currentIndex].scrollIntoView({ behavior: "smooth" });
+
+						// Set the next scroll timer
+						scrollTimer = setTimeout(scrollToNextSlide, scrollInterval);
+					}
+
+					// Start the auto-scroll
+					scrollTimer = setTimeout(scrollToNextSlide, scrollInterval);
+
+					// Event listeners to detect user interaction
+					const interactionEvents = ["mousedown", "mousemove", "keydown", "touchstart", "wheel", "scroll"];
+					
+					// When user interacts, stop auto-scrolling for a period of time
+					interactionEvents.forEach(event => {
+						document.addEventListener(event, function() {
+							// Clear the existing timer
+							clearTimeout(scrollTimer);
+							
+							// Set user interaction flag
+							userInteracted = true;
+							
+							// After 10 seconds of inactivity, resume auto-scrolling
+							clearTimeout(window.resumeTimer);
+							window.resumeTimer = setTimeout(function() {
+								userInteracted = false;
+								
+								// Find the current visible slide
+								let minDistance = Infinity;
+								slides.forEach((slide, index) => {
+									const rect = slide.getBoundingClientRect();
+									const distance = Math.abs(rect.top);
+									
+									if (distance < minDistance) {
+										minDistance = distance;
+										currentIndex = index;
+									}
+								});
+								
+								// Resume auto-scrolling from current position
+								scrollTimer = setTimeout(scrollToNextSlide, scrollInterval);
+							}, 10000);
+						});
+					});
+				}
+
+				setupAutoScroll();
+
+			} else {
+				console.log("Auto parameter not found - script inactive");
+			}
 		});
 		
 		// Unified IntersectionObserver for all animations
