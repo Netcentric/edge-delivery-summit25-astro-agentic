@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Scroll Page</title>
+    <title>Cognizant Moment Agentic Model</title>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -122,6 +122,7 @@
             transition: opacity 1s ease-in;
             border-radius: 30px; /* Rounded edges */
             position: relative;
+			width: max-content;
         }
 
 		.discover-button:hover {
@@ -139,6 +140,10 @@
             margin-left: 10px;  /* Space between text and icon */
             vertical-align: middle;  /* Align icon with the text */
         }
+
+		.discover-button-direction {
+			display: flex;
+		}
 
         /* Style for the logo */
         #logo {
@@ -368,13 +373,13 @@
 			display: flex;
 			flex-direction: column;
 			row-gap: 30px;
-			max-width: 450px;
+			max-width: 600px;
 			text-align: left;
 		}
 
 		.horizontal-carousel-last-section {
 			display: flex;
-			gap: 50px;
+			gap: 80px;
 			align-items: flex-start; /* align animation in center with text (special case: animation starts in left)*/
 		}
 
@@ -392,13 +397,12 @@
 		}
 
 		.arrow {
-			width: 120px;
+			width: 100px;
+			transform: rotate(-90deg);
 		}
 
-		.arrow-container {
-			display: flex;
-			column-gap: 350px;
-			margin-top: 60px;
+	    .image-rotated {
+			transform: rotate(270deg);
 		}
 
 		.right-arrow-direction {
@@ -409,9 +413,10 @@
 		}
 
 		.left-arrow-direction {
-			margin-right: auto;
 			align-items: center;
-			gap: 20px;
+			gap: 0;
+			text-align: left;
+			margin-top: 40px;
 		}
 		/* OrderedList Styles*/
 
@@ -886,6 +891,10 @@
 				  <p class="title-font">See the Agentic Model in Action</p>
 				  <p class="second-text">Explore our Supply Chain Demo at the booth and discover how AI-powered collaboration transforms 
 					  supply chain operations for greater efficiency and adaptability.</p>
+				  <button class="discover-button discover-button-direction" id="discover-button">
+					Start the Demo
+					<img class="image-rotated" src="assets/button-Icon.png" alt="Arrow Icon">
+				  </button>
 				</div>
 				<div class="horizontal-carousel-image horizontal-container">
 				  <img class="horizontal-last-section-image" src="assets/last-section-2.jpg" alt="Image 2">
@@ -893,8 +902,16 @@
 				  <p class="second-text">Find out how Cognizant Neuro® Business Processes simplifies and accelerates the adoption of automation 
 					  and AI in the enterprise helping our clients deliver better experiences, more efficiently.
 				  </p>
-				 </div>
-			  </div>
+				  <button class="discover-button discover-button-direction" id="discover-button">
+					Learn More
+					<img class="image-rotated" src="assets/button-Icon.png" alt="Arrow Icon">
+				  </button>
+				</div>
+			</div>
+			<div class="horizontal-carousel-last-section left-arrow-direction">
+				<img class="arrow" src="assets/arrow-left.gif" alt="Image 2">
+				<p class="second-text">Scroll down <br> for further options</p>
+			</div>
 		</div>
 
 		<div id="carousel-14" class="carousel-item carousel-last-item">
@@ -904,6 +921,10 @@
 				  <p class="title-font">Discover our smart Search <br>Solution for Seamless Conversations</p>
 				  <p class="second-text">Discover how we enhance semantic search with an intelligent chatbot, 
 					  delivering more intuitive and engaging interactions.</p>
+				  <button class="discover-button discover-button-direction" id="discover-button">
+					Explore the solution
+					<img class="image-rotated" src="assets/button-Icon.png" alt="Arrow Icon">
+			      </button>
 				</div>
 				<div class="horizontal-carousel-image horizontal-container">
 				  <img class="horizontal-last-section-image" src="assets/last-section-image-1.jpg" alt="Image 2">
@@ -911,18 +932,11 @@
 				  <p class="second-text">Discover how our innovations enhance Adobe Experience Platform, 
 					  unlocking new capabilities for data-driven experiences.
 				  </p>
+				  <button class="discover-button discover-button-direction" id="discover-button">
+					Learn how it works
+					<img class="image-rotated" src="assets/button-Icon.png" alt="Arrow Icon">
+			      </button>
 				</div>
-			</div>
-			<div class="arrow-container">
-				<div class="horizontal-carousel-last-section left-arrow-direction">
-					<img class="arrow" src="assets/arrow-left.gif" alt="Image 2">
-					<p class="second-text">Explore the other screens</p>
-				  </div>
-		
-				<div class="horizontal-carousel-last-section right-arrow-direction">
-					<img class="arrow" src="assets/arrow-right.gif" alt="Image 2">
-					<p class="second-text">Explore the other screens</p>
-				  </div>
 			</div>
 		</div>
 	</div>
