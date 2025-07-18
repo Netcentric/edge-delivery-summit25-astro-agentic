@@ -535,9 +535,49 @@
 			from { background-position: 0 0; }
 			to { background-position: -26730px 0; } /* Moves left by total width */
 		}
+
+		/* DEMO VISIBILITY, Hide in Mobile & show in Desktop */
+
+		/* Show Disclaimer in Mobile: narrower screens or narrower aspect ratio */
+		#disclaimer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			inset: 0;
+			text-align: center;
+			z-index: 99;
+			background-color: #000048;
+
+			p {
+				color: white;
+				font-size: 2em;
+				font-weight: 600;
+				text-align: center;
+				max-width: 80%;		
+			}
+		}
+
+
+
+		#carousel {
+			display: none;
+		}
+
+		/* Desktop / non-mobile: wider screens or wider aspect ratio */
+		@media (min-width: 1268px), (min-aspect-ratio: 4/3) {
+			#disclaimer {
+				display: none;
+			}
+
+			#carousel {
+				display: block;
+			}
+		}
     </style>
 </head>
 <body>
+	<div id="disclaimer"> <p>This demo is designed for desktop viewing. Please use a laptop or desktop computer to access it.</p></div>
 	<!----------------***************** Carousel ***************** -->
 	<div id="carousel" class="snap vertical">
 		<div id="carousel-00" class="carousel-item">
