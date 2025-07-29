@@ -206,10 +206,12 @@
 			overflow-y: auto;
 			display: flex;
 			flex-direction: column;
-			scroll-snap-type: y mandatory;
-			height: 100dvh;
-			overflow-y: scroll;
-			overscroll-behavior: contain;
+			@media (min-width: 769px) {
+				scroll-snap-type: y mandatory;
+				height: 100dvh;
+				overflow-y: scroll;
+				overscroll-behavior: contain;
+			}
 		}
 
 		.carousel-item {
@@ -221,13 +223,16 @@
 			color: #fff;
 			font-size: 20px;
 			width: 100%;
-			min-height: 100dvh;
+			min-height: 60dvh;
+			@media (min-width: 768px) {
+				min-height: 100dvh;
+			}
 			scroll-snap-align: start;
 			scroll-snap-stop: always;
 		}
 
-		.carousel-last-item {
-			flex-direction: column; 
+		.carousel-item.carousel-last-item {
+			flex-direction: column !important; 
 			justify-content: center;
 		}
 
@@ -235,7 +240,7 @@
 			flex: 1;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			/* justify-content: space-between; */
 			align-items: center;
 			padding: 40px;
 			font-size: 24px;
@@ -259,7 +264,9 @@
 
 		.carousel-text2.fade-in {
 			opacity: 1;
-			transform: translateY(0);
+			@media (min-width: 768px) {
+				transform: translateY(0);
+			}
 		}
 
 		.carousel-bg-7 {
@@ -536,48 +543,714 @@
 			to { background-position: -26730px 0; } /* Moves left by total width */
 		}
 
-		/* DEMO VISIBILITY, Hide in Mobile & show in Desktop */
-
-		/* Show Disclaimer in Mobile: narrower screens or narrower aspect ratio */
-		#disclaimer {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			position: absolute;
-			inset: 0;
-			text-align: center;
-			z-index: 99;
-			background-color: #000048;
-
-			p {
-				color: white;
-				font-size: 2em;
-				font-weight: 600;
-				text-align: center;
-				max-width: 80%;		
-			}
-		}
-
-
-
+		/* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
+		
+		/* Base mobile styles (default) */
+		/* Disable scroll snap on mobile for smooth scrolling */
 		#carousel {
-			display: none;
+			scroll-snap-type: none !important;
+			-webkit-overflow-scrolling: touch;
 		}
 
-		/* Desktop / non-mobile: wider screens or wider aspect ratio */
-		@media (min-width: 1268px), (min-aspect-ratio: 4/3) {
-			#disclaimer {
-				display: none;
+		.carousel-item {
+			scroll-snap-align: none !important;
+			scroll-snap-stop: normal !important;
+			flex-direction: column !important;
+			padding: 20px 16px !important;
+			min-height: 70vh;
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* Typography adjustments for mobile */
+		.text-highlight {
+			font-size: 42px !important;
+			line-height: 48px !important;
+			text-align: center;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+		}
+
+		.video-text-highlight {
+			font-size: 32px !important;
+			line-height: 38px !important;
+			text-align: center;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+		}
+
+		.second-text, .text-top, .bottom-text {
+			font-size: 16px !important;
+			line-height: 22px !important;
+			text-align: center;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+		}
+
+		.title-font, .bottom-title {
+			font-size: 20px !important;
+			line-height: 26px !important;
+			text-align: center;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+		}
+
+		.header-font {
+			font-size: 42px !important;
+			text-align: center;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+		}
+
+		/* Layout adjustments for mobile */
+		.carousel-text {
+			flex: 1;
+			padding: 20px 16px !important;
+			justify-content: center;
+			text-align: center;
+			width: 100%;
+			position: relative;
+			z-index: 2;
+		}
+
+		.carousel-item-padding-block {
+			padding: 30px 16px !important;
+		}
+
+		.carousel-image {
+			flex: 1;
+			width: 100%;
+			height: 50vh;
+			min-height: 300px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.carousel-image img {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover;
+			position: relative;
+		}
+
+		/* Video container adjustments */
+		.video-container {
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.carousel-text-video {
+			font-size: 1.5rem !important;
+			padding: 0 20px;
+			width: 100%;
+			position: absolute;
+			z-index: 3;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.carousel-text-video-bottom {
+			bottom: 15% !important;
+			padding: 0 20px;
+			position: absolute;
+			z-index: 3;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 100%;
+			max-width: 90vw;
+		}
+
+		/* Content positioning */
+		.content {
+			position: relative !important;
+			padding: 20px;
+			text-align: center;
+			width: 100%;
+			z-index: 3;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		/* Button adjustments */
+		.discover-button {
+			font-size: 16px !important;
+			padding: 12px 20px !important;
+			width: auto;
+			min-width: 200px;
+			margin: 0 auto;
+			display: block;
+			position: relative;
+			z-index: 4;
+			min-height: 44px;
+			touch-action: manipulation;
+		}
+
+		.discover-button img {
+			width: 20px !important;
+			margin-left: 8px !important;
+		}
+
+		/* Text block spacing */
+		.text-block {
+			margin-bottom: 30px !important;
+			position: relative;
+		}
+
+		.text-top, .text-bottom {
+			max-width: 100% !important;
+			text-align: center !important;
+			position: relative;
+		}
+
+		.text-top-width, .text-top-width-2 {
+			max-width: 100% !important;
+		}
+
+		/* Content wrapper adjustments */
+		.content-wrapper {
+			row-gap: 40px !important;
+			padding: 20px;
+			position: relative;
+			z-index: 2;
+		}
+
+		/* Numbered list adjustments */
+		.numbered-list-text {
+			font-size: 14px !important;
+			line-height: 20px !important;
+			margin-left: 0 !important;
+			list-style-position: inside;
+		}
+
+		/* Animation size adjustments */
+		.people-animation {
+			width: 280px !important;
+			height: 60px !important;
+			margin: 0 auto;
+		}
+
+		.brain-animation {
+			width: 80px !important;
+			height: 88px !important;
+			margin: 0 auto;
+		}
+
+		.building-animation {
+			width: 280px !important;
+			height: 88px !important;
+			margin: 0 auto;
+		}
+
+		.building-robot-animation {
+			width: 264px !important;
+			height: 192px !important;
+			margin: 0 auto;
+		}
+
+		/* Last section adjustments */
+		.carousel-last-section {
+			flex-direction: column !important;
+			gap: 30px !important;
+			position: relative;
+		}
+
+		.horizontal-carousel-last-section {
+			flex-direction: column !important;
+			gap: 40px !important;
+			align-items: center !important;
+			position: relative;
+		}
+
+		.horizontal-container {
+			max-width: 100% !important;
+			text-align: center !important;
+			position: relative;
+		}
+
+		.last-section-container {
+			padding-inline: 20px !important;
+			margin-top: 20px !important;
+			position: relative;
+		}
+
+		.last-section-title {
+			flex-direction: column !important;
+			gap: 5px !important;
+			text-align: center !important;
+			position: relative;
+		}
+
+		/* Arrow adjustments */
+		.arrow {
+			width: 60px !important;
+			position: relative;
+		}
+
+		.right-arrow-direction, .left-arrow-direction {
+			flex-direction: column !important;
+			align-items: center !important;
+			text-align: center !important;
+			gap: 10px !important;
+			margin-top: 20px !important;
+			position: relative;
+		}
+
+		/* Spacing adjustments */
+		.top-spacing {
+			margin-top: 40px !important;
+		}
+
+		.top-spacing-m {
+			margin-top: 30px !important;
+		}
+
+		/* Typing animation adjustments */
+		.typing-container {
+			text-align: center;
+			position: relative;
+		}
+
+		/* Fix overlapping issues */
+		.carousel-text2 {
+			position: relative !important;
+			z-index: 3;
+		}
+
+		.overlay-carousel {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
+
+		/* Ensure proper stacking */
+		.carousel-item > * {
+			position: relative;
+		}
+
+		/* Fix video positioning */
+		.video-container video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: 0;
+		}
+
+		/* Prevent zoom on input focus */
+		input, textarea, select {
+			font-size: 16px;
+		}
+
+		/* Remove tap highlights for cleaner interaction */
+		* {
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		/* Small mobile devices */
+		@media (max-width: 480px) {
+			.text-highlight {
+				font-size: 36px !important;
+				line-height: 42px !important;
 			}
 
+			.video-text-highlight {
+				font-size: 28px !important;
+				line-height: 34px !important;
+			}
+
+			.header-font {
+				font-size: 32px !important;
+			}
+
+			.second-text, .text-top, .bottom-text {
+				font-size: 14px !important;
+				line-height: 20px !important;
+			}
+
+			.title-font, .bottom-title {
+				font-size: 18px !important;
+				line-height: 24px !important;
+			}
+
+			.carousel-text {
+				padding: 15px 12px !important;
+			}
+
+			.carousel-item-padding-block {
+				padding: 20px 12px !important;
+			}
+
+			.content {
+				padding: 15px;
+			}
+
+			.discover-button {
+				font-size: 14px !important;
+				padding: 10px 16px !important;
+				min-width: 180px;
+				display: flex;
+				justify-content: center;
+			}
+
+			.discover-button img {
+				width: 18px !important;
+				margin-left: 6px !important;
+			}
+
+			/* Animation size adjustments for small screens */
+			.people-animation, .building-animation, .brain-animation, .building-robot-animation {
+				width: 100% !important;
+				height: 100px !important;
+			}
+
+			.carousel-text-video {
+				font-size: 1.2rem !important;
+				padding: 0 15px;
+				max-width: 95vw;
+			}
+
+			.carousel-text-video-bottom {
+				bottom: 10% !important;
+				padding: 0 15px;
+				max-width: 95vw;
+			}
+
+			/* Additional fixes for very small screens */
+			.carousel-item {
+				padding: 15px 10px !important;
+			}
+
+			.carousel-image {
+				height: 40vh;
+				min-height: 250px;
+			}
+
+			img, video {
+				width: 100%;
+			}
+
+			.horizontal-container {
+				padding: 0 10px;
+			}
+
+			.last-section-container {
+				padding-inline: 15px !important;
+			}
+		}
+
+		/* Landscape orientation adjustments */
+		@media (max-width: 768px) and (orientation: landscape) {
+			.carousel-item {
+				min-height: 100vh;
+				flex-direction: row;
+			}
+
+			.carousel-text {
+				flex: 1;
+				padding: 15px !important;
+			}
+
+			.carousel-image {
+				flex: 1;
+				height: 100vh;
+			}
+
+			.text-highlight {
+				font-size: 32px !important;
+				line-height: 38px !important;
+			}
+
+			.video-text-highlight {
+				font-size: 24px !important;
+				line-height: 30px !important;
+			}
+
+			.header-font {
+				font-size: 32px !important;
+			}
+
+			.second-text, .text-top, .bottom-text {
+				font-size: 14px !important;
+				line-height: 18px !important;
+			}
+
+			.title-font, .bottom-title {
+				font-size: 16px !important;
+				line-height: 20px !important;
+			}
+
+			.content-wrapper {
+				row-gap: 20px !important;
+			}
+
+			/* Animation size adjustments for landscape */
+			.people-animation {
+				width: 200px !important;
+				height: 40px !important;
+			}
+
+			.brain-animation {
+				width: 60px !important;
+				height: 66px !important;
+			}
+
+			.building-animation {
+				width: 200px !important;
+				height: 66px !important;
+			}
+
+			.building-robot-animation {
+				width: 180px !important;
+				height: 130px !important;
+			}
+		}
+
+		/* Tablet and larger screens */
+		@media (min-width: 769px) {
+			/* Re-enable scroll snap for desktop */
 			#carousel {
-				display: block;
+				scroll-snap-type: y mandatory !important;
+			}
+
+			.carousel-item {
+				scroll-snap-align: start !important;
+				scroll-snap-stop: always !important;
+				flex-direction: row !important;
+				padding: 0 !important;
+				min-height: 100dvh !important;
+			}
+
+			/* Typography for desktop */
+			.text-highlight {
+				font-size: 84px !important;
+				line-height: 90px !important;
+			}
+
+			.video-text-highlight {
+				font-size: 57px !important;
+				line-height: 62px !important;
+			}
+
+			.second-text, .text-top, .bottom-text {
+				font-size: 20px !important;
+				line-height: 26px !important;
+				text-align: left !important;
+			}
+
+			.title-font, .bottom-title {
+				font-size: 27px !important;
+				line-height: 33px !important;
+				text-align: left !important;
+			}
+
+			.header-font {
+				font-size: 84px !important;
+				text-align: center !important;
+			}
+
+			/* Layout for desktop */
+			.carousel-text {
+				flex: 1;
+				padding: 40px !important;
+				width: auto !important;
+			}
+
+			.carousel-item-padding-block {
+				padding: 60px 40px !important;
+			}
+
+			.carousel-image {
+				flex: 2 !important;
+				width: auto !important;
+				height: 100dvh !important;
+				min-height: auto !important;
+			}
+
+			.carousel-image img {
+				width: 100dvw !important;
+				height: 100dvh !important;
+			}
+
+			/* Content positioning for desktop */
+			.content {
+				position: absolute !important;
+				padding: 0 !important;
+				width: auto !important;
+				left: auto !important;
+				transform: none !important;
+			}
+
+			/* Logo for desktop */
+			#logo {
+				width: 120px;
+				top: 20px !important;
+				left: 20px !important;
+			}
+
+			/* Button for desktop */
+			.discover-button {
+				font-size: 20px !important;
+				padding: 12px 24px !important;
+				width: max-content !important;
+				margin: 0 auto !important;
+				display: flex;
+				min-height: auto !important;
+			}
+
+			.discover-button img {
+				width: 24px !important;
+				margin-left: 10px !important;
+			}
+
+			/* Text blocks for desktop */
+			.text-block {
+				margin-bottom: 50px !important;
+			}
+
+			.text-top, .text-bottom {
+				max-width: 250px !important;
+			}
+
+			.text-top-width {
+				max-width: 400px !important;
+			}
+
+			.text-top-width-2 {
+				max-width: 450px !important;
+			}
+
+			/* Content wrapper for desktop */
+			.content-wrapper {
+				row-gap: 60px !important;
+				padding: 0 !important;
+			}
+
+			/* Numbered list for desktop */
+			.numbered-list-text {
+				font-size: 15px !important;
+				line-height: 34px !important;
+				margin-left: -35px !important;
+			}
+
+			/* Animation sizes for desktop */
+			.people-animation {
+				width: 450px !important;
+				height: 100px !important;
+				margin: 0 !important;
+			}
+
+			.brain-animation {
+				width: 100px !important;
+				height: 110px !important;
+				margin: 24px 0 0 0 !important;
+			}
+
+			.building-animation {
+				width: 350px !important;
+				height: 110px !important;
+				margin: 24px 0 0 0 !important;
+			}
+
+			.building-robot-animation {
+				width: 330px !important;
+				height: 240px !important;
+				margin: 24px 0 0 0 !important;
+			}
+
+			/* Last section for desktop */
+			.carousel-last-section {
+				flex-direction: row !important;
+				gap: 40px !important;
+			}
+
+			.horizontal-carousel-last-section {
+				flex-direction: row !important;
+				gap: 80px !important;
+				align-items: flex-start !important;
+			}
+
+			.horizontal-container {
+				max-width: 600px !important;
+			}
+
+			.last-section-container {
+				padding-inline: 10vw !important;
+				margin-top: 40px !important;
+			}
+
+			.last-section-title {
+				flex-direction: row !important;
+				gap: 10px !important;
+			}
+
+			/* Arrow for desktop */
+			.arrow {
+				width: 100px !important;
+			}
+
+			.right-arrow-direction, .left-arrow-direction {
+				flex-direction: row !important;
+				align-items: center !important;
+				gap: 20px !important;
+				margin-top: 0 !important;
+			}
+
+			/* Spacing for desktop */
+			.top-spacing {
+				margin-top: 64px !important;
+			}
+
+			.top-spacing-m {
+				margin-top: 48px !important;
+			}
+
+			/* Typing container for desktop */
+			.typing-container {
+				text-align: center !important;
+			}
+
+			/* Video text for desktop */
+			.carousel-text-video {
+				font-size: 2rem !important;
+				padding: 0 !important;
+				width: auto !important;
+				left: auto !important;
+				transform: none !important;
+			}
+
+			.carousel-text-video-bottom {
+				bottom: 20% !important;
+				padding: 0 !important;
+				left: auto !important;
+				transform: none !important;
+				width: auto !important;
+				max-width: none !important;
+			}
+
+			/* Fade-in animation for desktop */
+			.carousel-text2.fade-in {
+				transform: translateY(0) !important;
+			}
+		}
+
+		/* High DPI displays */
+		@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+			/* Ensure crisp images on retina displays */
+			.carousel-image img {
+				image-rendering: -webkit-optimize-contrast;
+				image-rendering: crisp-edges;
 			}
 		}
     </style>
 </head>
 <body>
-	<div id="disclaimer"> <p>This demo is designed for desktop viewing. Please use a laptop or desktop computer to access it.</p></div>
 	<!----------------***************** Carousel ***************** -->
 	<div id="carousel" class="snap vertical">
 		<div id="carousel-00" class="carousel-item">
@@ -1007,10 +1680,16 @@
 		const urlParams = new URLSearchParams(window.location.search);
 		const autoParam = urlParams.has('auto');
 		
-			// Only execute the script logic if the auto parameter exists
-			if (autoParam) {
+		// Mobile detection function
+		function isMobileDevice() {
+			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+				   window.innerWidth <= 768;
+		}
+		
+			// Only execute the script logic if the auto parameter exists AND not on mobile
+			if (autoParam && !isMobileDevice()) {
 				// Your existing logic goes here
-				console.log("Auto parameter detected - executing script logic");
+				console.log("Auto parameter detected and not on mobile - executing script logic");
 
 				// Auto scroll function
 				function setupAutoScroll() {
@@ -1086,6 +1765,8 @@
 
 				setupAutoScroll();
 
+			} else if (autoParam && isMobileDevice()) {
+				console.log("Auto parameter detected but on mobile device - auto-scroll disabled for better mobile UX");
 			} else {
 				console.log("Auto parameter not found - script inactive");
 			}
@@ -1270,6 +1951,8 @@
 				}
 			}
 		});
+
+
 	</script>
 </body>
 </html>
