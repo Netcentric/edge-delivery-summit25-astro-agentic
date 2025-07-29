@@ -206,13 +206,12 @@
 			overflow-y: auto;
 			display: flex;
 			flex-direction: column;
-			scroll-snap-type: y mandatory;
-			height: 100dvh;
-			/* @media (min-width: 768px) {
+			@media (min-width: 769px) {
+				scroll-snap-type: y mandatory;
 				height: 100dvh;
-			} */
-			overflow-y: scroll;
-			overscroll-behavior: contain;
+				overflow-y: scroll;
+				overscroll-behavior: contain;
+			}
 		}
 
 		.carousel-item {
@@ -233,7 +232,7 @@
 		}
 
 		.carousel-last-item {
-			flex-direction: column; 
+			flex-direction: column !important; 
 			justify-content: center;
 		}
 
@@ -558,7 +557,7 @@
 			scroll-snap-stop: normal !important;
 			flex-direction: column !important;
 			padding: 20px 16px !important;
-			min-height: 100vh;
+			min-height: 70vh;
 			position: relative;
 			overflow: hidden;
 		}
@@ -673,15 +672,6 @@
 			transform: translateX(-50%);
 		}
 
-		/* Logo adjustments */
-		#logo {
-			position: absolute;
-			top: 15px;
-			left: 15px;
-			width: 80px !important;
-			z-index: 10;
-		}
-
 		/* Button adjustments */
 		.discover-button {
 			font-size: 16px !important;
@@ -730,7 +720,6 @@
 			font-size: 14px !important;
 			line-height: 20px !important;
 			margin-left: 0 !important;
-			text-align: center !important;
 			list-style-position: inside;
 		}
 
@@ -877,7 +866,7 @@
 			}
 
 			.header-font {
-				font-size: 36px !important;
+				font-size: 32px !important;
 			}
 
 			.second-text, .text-top, .bottom-text {
@@ -902,16 +891,12 @@
 				padding: 15px;
 			}
 
-			#logo {
-				width: 70px !important;
-				top: 10px;
-				left: 10px;
-			}
-
 			.discover-button {
 				font-size: 14px !important;
 				padding: 10px 16px !important;
 				min-width: 180px;
+				display: flex;
+				justify-content: center;
 			}
 
 			.discover-button img {
@@ -920,24 +905,9 @@
 			}
 
 			/* Animation size adjustments for small screens */
-			.people-animation {
-				width: 240px !important;
-				height: 50px !important;
-			}
-
-			.brain-animation {
-				width: 70px !important;
-				height: 77px !important;
-			}
-
-			.building-animation {
-				width: 240px !important;
-				height: 77px !important;
-			}
-
-			.building-robot-animation {
-				width: 220px !important;
-				height: 160px !important;
+			.people-animation, .building-animation, .brain-animation, .building-robot-animation {
+				width: 100% !important;
+				height: 100px !important;
 			}
 
 			.carousel-text-video {
@@ -962,6 +932,10 @@
 				min-height: 250px;
 			}
 
+			img, video {
+				width: 100%;
+			}
+
 			.horizontal-container {
 				padding: 0 10px;
 			}
@@ -975,7 +949,7 @@
 		@media (max-width: 768px) and (orientation: landscape) {
 			.carousel-item {
 				min-height: 100vh;
-				flex-direction: row !important;
+				flex-direction: row;
 			}
 
 			.carousel-text {
@@ -1048,7 +1022,7 @@
 			.carousel-item {
 				scroll-snap-align: start !important;
 				scroll-snap-stop: always !important;
-				flex-direction: row !important;
+				flex-direction: row;
 				padding: 0 !important;
 				min-height: 100dvh !important;
 			}
@@ -1067,11 +1041,13 @@
 			.second-text, .text-top, .bottom-text {
 				font-size: 20px !important;
 				line-height: 26px !important;
+				text-align: left !important;
 			}
 
 			.title-font, .bottom-title {
 				font-size: 27px !important;
 				line-height: 33px !important;
+				text-align: left !important;
 			}
 
 			.header-font {
@@ -1113,7 +1089,7 @@
 
 			/* Logo for desktop */
 			#logo {
-				width: 120px !important;
+				width: 120px;
 				top: 20px !important;
 				left: 20px !important;
 			}
@@ -1124,7 +1100,7 @@
 				padding: 12px 24px !important;
 				width: max-content !important;
 				margin: 0 !important;
-				display: inline-block !important;
+				display: flex;
 				min-height: auto !important;
 			}
 
