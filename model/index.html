@@ -231,7 +231,7 @@
 			scroll-snap-stop: always;
 		}
 
-		.carousel-last-item {
+		.carousel-item.carousel-last-item {
 			flex-direction: column !important; 
 			justify-content: center;
 		}
@@ -1022,7 +1022,7 @@
 			.carousel-item {
 				scroll-snap-align: start !important;
 				scroll-snap-stop: always !important;
-				flex-direction: row;
+				flex-direction: row !important;
 				padding: 0 !important;
 				min-height: 100dvh !important;
 			}
@@ -1099,7 +1099,7 @@
 				font-size: 20px !important;
 				padding: 12px 24px !important;
 				width: max-content !important;
-				margin: 0 !important;
+				margin: 0 auto !important;
 				display: flex;
 				min-height: auto !important;
 			}
